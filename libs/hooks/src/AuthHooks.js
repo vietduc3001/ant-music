@@ -33,10 +33,10 @@ import { getUserFromFirebase } from '@ant-music/helpers/AuthHelper';
 
 export const useAuthUser = () => {
   const { user, isAuthenticated, isLoading } = useFirebase();
-  console.log(
-    '🚀 ~ file: AuthHooks.js:36 ~ useAuthUser ~ useFirebase:',
-    useFirebase(),
-  );
+  // console.log(
+  //   '🚀 ~ file: AuthHooks.js:36 ~ useAuthUser ~ useFirebase:',
+  //   useFirebase(),
+  // );
   return {
     isLoading,
     isAuthenticated,

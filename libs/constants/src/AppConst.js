@@ -14,3 +14,4 @@ export const defaultUser = {
 export const allowMultiLanguage = process.env.NX_MULTILINGUAL === 'true';
 export const fileStackKey = process.env.NX_FILESTACK_KEY;
 export const initialUrl = process.env.NX_INITIAL_URL; // this url will open after login
+export const guestUrl = process.env.NX_INITIAL_GUEST_URL; // this url will open if haven't login before

@@ -15,13 +15,14 @@ import {
 } from '../AppRoutes';
 import { useRoutes } from 'react-router-dom';
 import { Layouts } from '@ant-music/components/AppLayout';
+import routesConfig from '../AppRoutes/routesConfig';
 
 const AppLayout = () => {
   const { navStyle } = useLayoutContext();
   const { user, isAuthenticated } = useAuthUser();
   console.log(
-    '🚀 ~ file: index.js:20 ~ AppLayout ~ isAuthenticated:',
-    isAuthenticated,
+    '🚀 ~ file: index.js:23 ~ AppLayout ~ useAuthUser:',
+    useAuthUser(),
   );
   const AppLayout = Layouts[navStyle];
   const generatedRoutes = generateRoutes({
@@ -31,25 +32,14 @@ const AppLayout = () => {
     authorizedStructure,
     anonymousStructure,
   });
-  console.log(
-    '🚀 ~ file: index.js:27 ~ AppLayout ~ generatedRoutes:',
-    generatedRoutes,
-  );
-  // const routes = useRoutes(generatedRoutes);
-  console.log(
-    '🚀 ~ file: index.js:28 ~ AppLayout ~ generatedRoutes:',
-    generatedRoutes,
-  );
+  const routes = useRoutes(generatedRoutes);
 
-  return (
-    {
-      isAuthenticated ? <> :<AuthWrapper>
-      <AppContentView
-      // routes={routes}
-      />
+  return isAuthenticated ? (
+    <AppLayout routes={routes} routesConfig={routesConfig} />
+  ) : (
+    <AuthWrapper>
+      <AppContentView routes={routes} />
     </AuthWrapper>
-    }
-    
   );
 };
 

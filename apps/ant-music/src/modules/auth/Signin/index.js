@@ -1,7 +1,3 @@
-import React from 'react';
+import { SignInFirebase } from '@ant-music/modules/auth/SignIn';
 
-const Signin = () => {
-  return <div>Signin</div>;
-};
-
-export default Signin;
+export default SignInFirebase;

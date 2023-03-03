@@ -83,6 +83,7 @@
         "libs/helpers/src/RouteGenerator.js"
       ],
       "@ant-music/helpers/AuthHelper": ["libs/helpers/src/AuthHelper.js"],
+      "@ant-music/helpers/IntlMessages": ["libs/helpers/src/IntlMessages.js"],
 
       // =============================== hooks =============================
       "@ant-music/hooks": ["libs/hooks/src/index.ts"],
@@ -93,6 +94,9 @@
 
       // =============================== modules =============================
       "@ant-music/modules": ["libs/modules/src/index.ts"],
+      "@ant-music/modules/auth/SignIn": [
+        "libs/modules/src/lib/auth/Signin/index.js"
+      ],
 
       // =============================== services =============================
       "@ant-music/services/auth/FirebaseAuthProvider": [

@@ -6,7 +6,7 @@ import Error403 from '../../modules/errorPages/Error403';
 import { errorPagesConfigs } from './ErrorPagesRoutes';
 // import {samplePagesConfigs} from './SamplePages';
 import { accountPagesConfigs } from './AccountRoutes';
-import { initialUrl } from '@ant-music/constants/AppConst';
+import { initialUrl, guestUrl } from '@ant-music/constants/AppConst';
 
 const authorizedStructure = {
   fallbackPath: '/signin',
@@ -21,15 +21,16 @@ const unAuthorizedStructure = {
   fallbackPath: initialUrl,
   routes: authRouteConfig,
 };
+
 const anonymousStructure = {
   routes: errorPagesConfigs.concat([
     {
       path: '/',
-      element: <Navigate to={initialUrl} />,
+      element: <Navigate to={guestUrl} />,
     },
     {
       path: '*',
-      element: <Navigate to='/error-pages/error-404' />,
+      element: <Navigate to='/signin' />,
     },
   ]),
 };
