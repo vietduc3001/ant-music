@@ -14,7 +14,97 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      // ============================== components =============================
+      "@ant-music/components": ["libs/components/src/index.js"],
+      "@ant-music/components/AppLogo": [
+        "libs/components/src/lib/AppLayout/components/AppLogo/index.js"
+      ],
+      "@ant-music/components/AppLoader": [
+        "libs/components/src/lib/AppLoader/index.js"
+      ],
+      "@ant-music/components/AppSuspense": [
+        "libs/components/src/lib/AppSuspense/index.js"
+      ],
+      "@ant-music/components/AppContentView": [
+        "libs/components/src/lib/AppContentView/index.js"
+      ],
+      "@ant-music/components/AppScrollbar": [
+        "libs/components/src/lib/AppScrollbar/index.js"
+      ],
+      "@ant-music/components/AuthRoutes": [
+        "libs/components/src/lib/AuthRoutes.js"
+      ],
+      "@ant-music/components/AppLayout": [
+        "libs/components/src/lib/AppLayout/index.js"
+      ],
+
+      // =============================== constants =============================
+      "@ant-music/constants": ["libs/constants/src/index.js"],
+      "@ant-music/constants/defaultConfig": [
+        "libs/constants/src/defaultConfig.js"
+      ],
+      "@ant-music/constants/AppEnums": ["libs/constants/src/AppEnums.js"],
+      "@ant-music/constants/AppConst": ["libs/constants/src/AppConst.js"],
+      "@ant-music/constants/ActionTypes": ["libs/constants/src/ActionTypes.js"],
+
+      // =============================== context =============================
+      "@ant-music/context/AppContextProvider": [
+        "libs/context/src/AppContextProvider/index.js"
+      ],
+      "@ant-music/context/AppLocaleProvider": [
+        "libs/context/src/AppLocaleProvider/index.js"
+      ],
+      "@ant-music/context/AppStyleProvider": [
+        "libs/context/src/AppStyleProvider/index.js"
+      ],
+      "@ant-music/context/AppThemeProvider": [
+        "libs/context/src/AppThemeProvider/index.js"
+      ],
+      "@ant-music/context/InfoViewContextProvider": [
+        "libs/context/src/AppContextProvider/InfoViewContextProvider.js"
+      ],
+      "@ant-music/context/LayoutContextProvider": [
+        "libs/context/src/AppContextProvider/LayoutContextProvider.js"
+      ],
+      "@ant-music/context/LocaleContextProvider": [
+        "libs/context/src/AppContextProvider/LocaleContextProvider.js"
+      ],
+      "@ant-music/context/SidebarContextProvider": [
+        "libs/context/src/AppContextProvider/SidebarContextProvider.js"
+      ],
+      "@ant-music/context/ThemeContextProvider": [
+        "libs/context/src/AppContextProvider/ThemeContextProvider.js"
+      ],
+
+      // =============================== helpers =============================
+      "@ant-music/helpers": ["libs/helpers/src/index.js"],
+      "@ant-music/helpers/RouteGenerator": [
+        "libs/helpers/src/RouteGenerator.js"
+      ],
+      "@ant-music/helpers/AuthHelper": ["libs/helpers/src/AuthHelper.js"],
+
+      // =============================== hooks =============================
+      "@ant-music/hooks": ["libs/hooks/src/index.ts"],
+      "@ant-music/hooks/AuthHooks": ["libs/hooks/src/AuthHooks.js"],
+
+      // =============================== mockapi =============================
+      "@ant-music/mockapi": ["libs/mockapi/src/index.ts"],
+
+      // =============================== modules =============================
+      "@ant-music/modules": ["libs/modules/src/index.ts"],
+
+      // =============================== services =============================
+      "@ant-music/services/auth/FirebaseAuthProvider": [
+        "libs/services/auth/src/firebase/FirebaseAuthProvider.js"
+      ],
+      "@ant-music/services/auth/JWT": [
+        "libs/services/auth/src/jwt-auth/index.js"
+      ],
+      "@ant-music/services/auth/JWTAuthProvider": [
+        "libs/services/auth/src/jwt-auth/JWTAuthProvider.js"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

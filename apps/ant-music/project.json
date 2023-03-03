@@ -13,7 +13,7 @@
         "outputPath": "dist/apps/ant-music",
         "index": "apps/ant-music/src/index.html",
         "baseHref": "/",
-        "main": "apps/ant-music/src/main.tsx",
+        "main": "apps/ant-music/src/main.js",
         "tsConfig": "apps/ant-music/tsconfig.app.json",
         "assets": [
           "apps/ant-music/src/favicon.ico",
@@ -34,8 +34,8 @@
         "production": {
           "fileReplacements": [
             {
-              "replace": "apps/ant-music/src/environments/environment.ts",
-              "with": "apps/ant-music/src/environments/environment.prod.ts"
+              "replace": "apps/ant-music/src/environments/environment.js",
+              "with": "apps/ant-music/src/environments/environment.prod.js"
             }
           ],
           "optimization": true,
@@ -75,7 +75,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/ant-music/jest.config.ts",
+        "jestConfig": "apps/ant-music/jest.config.js",
         "passWithNoTests": true
       },
       "configurations": {
