@@ -91,7 +91,7 @@ export const StyledSignTextGrey = styled.span`
 
 export const StyledSignLinkTag = styled(Link)`
   text-decoration: none;
-  color: ${({ theme }) => theme.palette.primary.main}; ;
+  color: ${({ theme }) => theme.palette.primary.main};
 `;
 
 export const StyledSignFooter = styled.div`
@@ -195,7 +195,8 @@ export const StyledSignIconBtn = styled(Button)`
 
 export const SignInButton = styled(Button)`
   border-radius: ${({ theme }) => theme.sizes.borderRadius.base};
-  width: 10rem;
+  /* width: 10rem; */
+  width: 100%;
   font-size: ${({ theme }) => theme.font.size.base};
   font-weight: ${({ theme }) => theme.font.weight.regular};
   text-transform: uppercase;

@@ -7,6 +7,7 @@ import {
   SHOW_MESSAGE,
 } from '@ant-music/constants';
 import FirebaseAuthProvider from '@ant-music/services/auth/FirebaseAuthProvider';
+import JWTAuthProvider from '@ant-music/services/auth/JWTAuthProvider';
 
 const AppAuthProvider = ({ children }) => {
   const dispatch = useDispatch();
@@ -25,14 +26,14 @@ const AppAuthProvider = ({ children }) => {
   };
 
   return (
-    <FirebaseAuthProvider
+    <JWTAuthProvider
       fetchStart={fetchStart}
       fetchError={fetchError}
       fetchSuccess={fetchSuccess}
       showMessage={showMessage}
     >
       {children}
-    </FirebaseAuthProvider>
+    </JWTAuthProvider>
   );
 };
 

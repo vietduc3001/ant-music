@@ -16,18 +16,18 @@ const AuthWrapper = ({ children }) => {
     <StyledAuth>
       <StyledAuthWrap key={'wrap'}>
         <StyledAuthCard>
-          <StyledAuthMainContent>
-            <StyledAuthCardHeader>
-              <AppLogo />
-            </StyledAuthCardHeader>
-            {children}
-          </StyledAuthMainContent>
-          <StyledAuthWellAction>
+          {/* <StyledAuthMainContent> */}
+          <StyledAuthCardHeader>
+            <AppLogo />
+          </StyledAuthCardHeader>
+          {children}
+          {/* </StyledAuthMainContent> */}
+          {/* <StyledAuthWellAction>
             <StyledAuthWelContent>
               <h2>Chào mừng đến với Ant Music!</h2>
               <p>Hệ thống quản lý nhạc.</p>
             </StyledAuthWelContent>
-          </StyledAuthWellAction>
+          </StyledAuthWellAction> */}
         </StyledAuthCard>
       </StyledAuthWrap>
     </StyledAuth>

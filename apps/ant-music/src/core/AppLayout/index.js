@@ -20,10 +20,6 @@ import routesConfig from '../AppRoutes/routesConfig';
 const AppLayout = () => {
   const { navStyle } = useLayoutContext();
   const { user, isAuthenticated } = useAuthUser();
-  console.log(
-    '🚀 ~ file: index.js:23 ~ AppLayout ~ useAuthUser:',
-    useAuthUser(),
-  );
   const AppLayout = Layouts[navStyle];
   const generatedRoutes = generateRoutes({
     isAuthenticated: isAuthenticated,

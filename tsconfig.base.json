@@ -38,6 +38,12 @@
       "@ant-music/components/AppLayout": [
         "libs/components/src/lib/AppLayout/index.js"
       ],
+      "@ant-music/components/AppAnimate": [
+        "libs/components/src/lib/AppAnimate/index.js"
+      ],
+      "@ant-music/components/AppPageMeta": [
+        "libs/components/src/lib/AppPageMeta/index.js"
+      ],
 
       // =============================== constants =============================
       "@ant-music/constants": ["libs/constants/src/index.js"],
@@ -97,6 +103,9 @@
       "@ant-music/modules/auth/SignIn": [
         "libs/modules/src/lib/auth/Signin/index.js"
       ],
+      "@ant-music/modules/auth/SignUp": [
+        "libs/modules/src/lib/auth/Signup/index.js"
+      ],
 
       // =============================== services =============================
       "@ant-music/services/auth/FirebaseAuthProvider": [
@@ -107,7 +116,11 @@
       ],
       "@ant-music/services/auth/JWTAuthProvider": [
         "libs/services/auth/src/jwt-auth/JWTAuthProvider.js"
-      ]
+      ],
+      "@ant-music/services/localization": [
+        "libs/services/localization/src/index.js"
+      ],
+      "@ant-music/services/axios": ["libs/services/axios/src/index.js"]
     }
   },
   "exclude": ["node_modules", "tmp"]

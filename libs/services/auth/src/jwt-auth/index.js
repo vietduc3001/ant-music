@@ -1,7 +1,10 @@
-import axios from '@crema/services/axios';
+import axios from '@ant-music/services/axios';
+// import * as dotenv from 'dotenv'; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+// dotenv.config();
 
 const jwtAxios = axios.create({
-  baseURL: 'https://cremaapi.pythonanywhere.com/api/', //YOUR_API_URL HERE
+  // baseURL: process.env.API_ENDPOINT, //YOUR_API_URL HERE
+  baseURL: 'https://api-admin-ant.vercel.app', //YOUR_API_URL HERE
   headers: {
     'Content-Type': 'application/json',
   },

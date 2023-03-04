@@ -1,3 +1,4 @@
 import SignInFirebase from './SigninFirebase';
+import SigninJwtAuth from './SigninJwtAuth';
 
-export { SignInFirebase };
+export { SignInFirebase, SigninJwtAuth };

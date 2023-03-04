@@ -21,11 +21,6 @@ const AppThemeProvider = (props) => {
   // useEffect(() => {
   //   document.body.setAttribute('dir', direction);
   // }, [direction]);
-  const abc = useThemeContext();
-  console.log(
-    '🚀 ~ file: index.js:27 ~ AppThemeProvider ~ useThemeContext:',
-    abc,
-  );
 
   return (
     <ThemeProvider theme={theme}>

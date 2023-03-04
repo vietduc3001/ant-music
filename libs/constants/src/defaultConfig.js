@@ -173,19 +173,19 @@ const defaultConfig = {
     sidebarBgImageId: 1,
     colorSet: LightSidebar,
   },
-  locale: {
-    languageId: 'english',
-    locale: 'en',
-    name: 'English',
-    icon: 'us',
-  },
-
   // locale: {
-  //   languageId: 'vietnamese',
-  //   locale: 'vi',
-  //   name: 'Vietnamese',
-  //   icon: 'vi',
+  //   languageId: 'english',
+  //   locale: 'en',
+  //   name: 'English',
+  //   icon: 'us',
   // },
+
+  locale: {
+    languageId: 'vietnamese',
+    locale: 'vi',
+    name: 'Vietnamese',
+    icon: 'vi',
+  },
   themeStyle: ThemeStyle.STANDARD,
   direction: LayoutDirection.LTR,
   themeMode: process.env.NX_THEME_MODE,

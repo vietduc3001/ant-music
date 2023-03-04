@@ -1,7 +1,3 @@
-import React from 'react';
+import { SignupJwtAuth, SignupFirebase } from '@ant-music/modules/auth/SignUp';
 
-const Signup = () => {
-  return <div>Signup</div>;
-};
-
-export default Signup;
+export default SignupJwtAuth;

@@ -1,3 +1,3 @@
-import { SignInFirebase } from '@ant-music/modules/auth/SignIn';
+import { SignInFirebase, SigninJwtAuth } from '@ant-music/modules/auth/SignIn';
 
-export default SignInFirebase;
+export default SigninJwtAuth;

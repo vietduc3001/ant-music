@@ -9,10 +9,11 @@ export const StyledAuthWrap = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 95%;
 `;
 
 export const StyledAuthCard = styled(Card)`
-  max-width: 900px;
+  max-width: 500px;
   min-height: 350px;
   width: 100%;
   overflow: hidden;
@@ -21,6 +22,7 @@ export const StyledAuthCard = styled(Card)`
   border: 0 none;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
     min-height: 450px;
@@ -28,8 +30,8 @@ export const StyledAuthCard = styled(Card)`
 
   & .ant-card-body {
     padding: 0;
-    display: flex;
-    flex: 1;
+    /* display: flex; */
+    /* flex: 1; */
   }
 `;
 
@@ -44,9 +46,9 @@ export const StyledAuthMainContent = styled.div`
     width: 50%;
   }
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.lg}px) {
+  /* @media screen and (min-width: ${({ theme }) => theme.breakpoints.lg}px) {
     width: 40%;
-  }
+  } */
 `;
 
 export const StyledAuthCardHeader = styled.div`

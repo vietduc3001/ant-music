@@ -9,6 +9,7 @@ import AppAuthProvider from './core/AppAuthProvider';
 import configureStore from './toolkit/store';
 import { BrowserRouter } from 'react-router-dom';
 import AuthRoutes from '@ant-music/components/AuthRoutes';
+import AppLocaleProvider from '@ant-music/context/AppLocaleProvider';
 
 const store = configureStore();
 
@@ -17,15 +18,17 @@ const App = () => {
     <AppContextProvider>
       <Provider store={store}>
         <AppThemeProvider>
-          <BrowserRouter>
-            <AppAuthProvider>
-              <AuthRoutes>
-                <GlobalStyles />
-                <Normalize />
-                <AppLayout />
-              </AuthRoutes>
-            </AppAuthProvider>
-          </BrowserRouter>
+          <AppLocaleProvider>
+            <BrowserRouter>
+              <AppAuthProvider>
+                <AuthRoutes>
+                  <GlobalStyles />
+                  <Normalize />
+                  <AppLayout />
+                </AuthRoutes>
+              </AppAuthProvider>
+            </BrowserRouter>
+          </AppLocaleProvider>
         </AppThemeProvider>
       </Provider>
     </AppContextProvider>

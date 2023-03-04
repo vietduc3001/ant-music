@@ -5,7 +5,6 @@ import AppSuspense from '@ant-music/components/AppSuspense';
 import PropTypes from 'prop-types';
 
 const AppContentView = ({ routes }) => {
-  console.log('🚀 ~ file: index.js:8 ~ AppContentView ~ routes:', routes);
   return (
     <StyledMainContentView>
       <AppSuspense>

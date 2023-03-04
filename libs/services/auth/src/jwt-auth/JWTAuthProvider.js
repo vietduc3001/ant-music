@@ -15,7 +15,7 @@ const JWTAuthAuthProvider = ({
   fetchSuccess,
   fetchError,
 }) => {
-  const [firebaseData, setJWTAuthData] = useState({
+  const [jwtAuthData, setJWTAuthData] = useState({
     user: null,
     isAuthenticated: false,
     isLoading: true,
@@ -36,24 +36,24 @@ const JWTAuthAuthProvider = ({
         return;
       }
       setAuthToken(token);
-      jwtAxios
-        .get('/auth')
-        .then(({ data }) => {
-          fetchSuccess();
-          setJWTAuthData({
-            user: data,
-            isLoading: false,
-            isAuthenticated: true,
-          });
-        })
-        .catch(() => {
-          setJWTAuthData({
-            user: undefined,
-            isLoading: false,
-            isAuthenticated: false,
-          });
-          fetchSuccess();
-        });
+      // jwtAxios
+      //   .get('/auth/login')
+      //   .then(({ data }) => {
+      //     fetchSuccess();
+      //     setJWTAuthData({
+      //       user: data,
+      //       isLoading: false,
+      //       isAuthenticated: true,
+      //     });
+      //   })
+      //   .catch(() => {
+      //     setJWTAuthData({
+      //       user: undefined,
+      //       isLoading: false,
+      //       isAuthenticated: false,
+      //     });
+      //     fetchSuccess();
+      //   });
     };
 
     getAuthUser();
@@ -62,19 +62,19 @@ const JWTAuthAuthProvider = ({
   const signInUser = async ({ email, password }) => {
     fetchStart();
     try {
-      const { data } = await jwtAxios.post('auth', { email, password });
+      const { data } = await jwtAxios.post('auth/login', { email, password });
       localStorage.setItem('token', data.token);
       setAuthToken(data.token);
-      const res = await jwtAxios.get('/auth');
+      // const res = await jwtAxios.get('/auth/login');
       setJWTAuthData({
-        user: res.data,
+        // user: res.data,
         isAuthenticated: true,
         isLoading: false,
       });
       fetchSuccess();
     } catch (error) {
       setJWTAuthData({
-        ...firebaseData,
+        ...jwtAuthData,
         isAuthenticated: false,
         isLoading: false,
       });
@@ -82,13 +82,19 @@ const JWTAuthAuthProvider = ({
     }
   };
 
-  const signUpUser = async ({ name, email, password }) => {
+  const signUpUser = async ({ lastName, firstName, email, password }) => {
     fetchStart();
     try {
-      const { data } = await jwtAxios.post('users', { name, email, password });
+      const { data } = await jwtAxios.post('auth/register', {
+        lastname: lastName,
+        firstname: firstName,
+        email,
+        password,
+        birthday: '30/01/2001',
+      });
       localStorage.setItem('token', data.token);
       setAuthToken(data.token);
-      const res = await jwtAxios.get('/auth');
+      const res = await jwtAxios.get('/auth/register');
       setJWTAuthData({
         user: res.data,
         isAuthenticated: true,
@@ -97,7 +103,7 @@ const JWTAuthAuthProvider = ({
       fetchSuccess();
     } catch (error) {
       setJWTAuthData({
-        ...firebaseData,
+        ...jwtAuthData,
         isAuthenticated: false,
         isLoading: false,
       });
@@ -119,7 +125,7 @@ const JWTAuthAuthProvider = ({
   return (
     <JWTAuthContext.Provider
       value={{
-        ...firebaseData,
+        ...jwtAuthData,
       }}
     >
       <JWTAuthActionsContext.Provider
