@@ -44,6 +44,9 @@
       "@ant-music/components/AppPageMeta": [
         "libs/components/src/lib/AppPageMeta/index.js"
       ],
+      "@ant-music/components/CustomComponents": [
+        "libs/components/src/lib/CustomComponents/index.js"
+      ],
 
       // =============================== constants =============================
       "@ant-music/constants": ["libs/constants/src/index.js"],

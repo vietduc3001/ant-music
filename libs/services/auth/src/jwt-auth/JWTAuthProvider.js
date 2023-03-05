@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import jwtAxios, { setAuthToken } from './index';
+import moment from 'moment';
 
 const JWTAuthContext = createContext();
 const JWTAuthActionsContext = createContext();
@@ -82,7 +83,13 @@ const JWTAuthAuthProvider = ({
     }
   };
 
-  const signUpUser = async ({ lastName, firstName, email, password }) => {
+  const signUpUser = async ({
+    lastName,
+    firstName,
+    email,
+    password,
+    birthday,
+  }) => {
     fetchStart();
     try {
       const { data } = await jwtAxios.post('auth/register', {
@@ -90,7 +97,7 @@ const JWTAuthAuthProvider = ({
         firstname: firstName,
         email,
         password,
-        birthday: '30/01/2001',
+        birthday: moment(birthday).format('DD/MM/YYYY'),
       });
       localStorage.setItem('token', data.token);
       setAuthToken(data.token);

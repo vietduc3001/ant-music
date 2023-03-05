@@ -2,6 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useIntl } from 'react-intl';
 import { Checkbox, Form, Input } from 'antd';
+import {
+  TextField,
+  TextFieldPassword,
+} from '@ant-music/components/CustomComponents';
 
 import IntlMessages from '@ant-music/helpers/IntlMessages';
 import { useAuthMethod } from '@ant-music/hooks/AuthHooks';
@@ -52,7 +56,8 @@ const SignInJwtAuth1 = () => {
             className='form-field'
             rules={[{ required: true, message: 'Please input your Email!' }]}
           >
-            <Input placeholder={messages['common.email']} />
+            <TextField name='signin-email' label={messages['common.email']} />
+            {/* <Input placeholder={messages['common.email']} /> */}
           </Form.Item>
 
           <Form.Item
@@ -60,7 +65,10 @@ const SignInJwtAuth1 = () => {
             className='form-field'
             rules={[{ required: true, message: 'Please input your Password!' }]}
           >
-            <Input.Password placeholder={messages['common.password']} />
+            <TextFieldPassword
+              name='signin-password'
+              label={messages['common.password']}
+            />
           </Form.Item>
 
           <StyledRememberMe>

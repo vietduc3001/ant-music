@@ -1,5 +1,5 @@
-import React from 'react';
-import { Checkbox, Col, Form, Input, Row } from 'antd';
+import React, { useRef } from 'react';
+import { Checkbox, Col, DatePicker, Form, Input, Row } from 'antd';
 import IntlMessages from '@ant-music/helpers/IntlMessages';
 import { useIntl } from 'react-intl';
 import { useAuthMethod } from '@ant-music/hooks/AuthHooks';
@@ -13,13 +13,33 @@ import {
   StyledSignupLink,
   StyledSignUpTestGrey,
 } from './index.styled';
+import {
+  TextField,
+  TextFieldPassword,
+} from '@ant-music/components/CustomComponents';
 
 const SignupJwtAuth = () => {
+  const formRef = useRef(null);
   const { messages } = useIntl();
   const { signUpUser } = useAuthMethod();
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
+  };
+
+  const onFinish = (values) => {
+    formRef.current
+      .validateFields()
+      .then((values) => {
+        console.log('🚀 ~ file: index.js:30 ~ onFinish ~ values:', values);
+        signUpUser(values);
+      })
+      .catch(({ errorFields }) => {
+        if (errorFields?.length > 0) {
+          formRef.current.scrollToField(errorFields[0].name);
+        }
+      });
+    //
   };
 
   return (
@@ -28,10 +48,11 @@ const SignupJwtAuth = () => {
         <StyledSignUpForm
           name='basic'
           initialValues={{ remember: true }}
-          onFinish={signUpUser}
+          onFinish={onFinish}
           onFinishFailed={onFinishFailed}
+          ref={formRef}
         >
-          <Row>
+          <Row gutter={10}>
             <Col xs={24} md={12}>
               <Form.Item
                 name='lastName'
@@ -44,6 +65,10 @@ const SignupJwtAuth = () => {
                 ]}
               >
                 <Input placeholder={messages['common.lastName']} />
+                {/* <TextField
+                  name='signup-lastName'
+                  label={messages['common.lastName']}
+                /> */}
               </Form.Item>
             </Col>
             <Col xs={24} md={12}>
@@ -58,6 +83,10 @@ const SignupJwtAuth = () => {
                 ]}
               >
                 <Input placeholder={messages['common.firstName']} />
+                {/* <TextField
+                  name='signup-firstName'
+                  label={messages['common.firstName']}
+                /> */}
               </Form.Item>
             </Col>
           </Row>
@@ -69,7 +98,26 @@ const SignupJwtAuth = () => {
               { required: true, message: messages['validation.emailRequired'] },
             ]}
           >
-            <Input placeholder={messages['common.email']} />
+            <Input type='email' placeholder={messages['common.email']} />
+            {/* <TextField name='signup-email' label={messages['common.email']} /> */}
+          </Form.Item>
+
+          <Form.Item
+            name='birthday'
+            className='form-field'
+            rules={[
+              {
+                required: true,
+                message: messages['validation.birthdayRequired'],
+              },
+            ]}
+          >
+            <DatePicker
+              style={{ width: '100%' }}
+              format='DD/MM/YYYY'
+              placeholder={messages['common.birthday']}
+            />
+            {/* <TextField name='signup-email' label={messages['common.email']} /> */}
           </Form.Item>
 
           <Form.Item
@@ -83,6 +131,10 @@ const SignupJwtAuth = () => {
             ]}
           >
             <Input.Password placeholder={messages['common.password']} />
+            {/* <TextFieldPassword
+              name='signup-password'
+              label={messages['common.password']}
+            /> */}
           </Form.Item>
           <Form.Item
             name='confirmPassword'
@@ -92,12 +144,26 @@ const SignupJwtAuth = () => {
                 required: true,
                 message: messages['validation.reTypePassword'],
               },
+              ({ getFieldValue }) => ({
+                validator(rule, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(
+                    messages['validation.passwordMisMatch'],
+                  );
+                },
+              }),
             ]}
           >
             <Input.Password placeholder={messages['common.retypePassword']} />
+            {/* <TextFieldPassword
+              name='signup-retypePassword'
+              label={messages['common.retypePassword']}
+            /> */}
           </Form.Item>
 
-          <StyledSignupCheckBox
+          {/* <StyledSignupCheckBox
             className='form-field'
             name='iAgreeTo'
             valuePropName='checked'
@@ -108,7 +174,7 @@ const SignupJwtAuth = () => {
             <StyledSignupLink>
               <IntlMessages id='common.termConditions' />
             </StyledSignupLink>
-          </StyledSignupCheckBox>
+          </StyledSignupCheckBox> */}
 
           <div className='form-btn-field'>
             <StyledSignUpBtn type='primary' htmlType='submit'>
