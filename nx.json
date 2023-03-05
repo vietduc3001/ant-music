@@ -6,7 +6,7 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/nx-cloud",
+      "runner": "nx/tasks-runners/default",
       "options": {
         "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "MjM4MGQ5ZWEtOGE4NC00NzQ2LTk1N2UtMjQ5ODBmOTViMGFhfHJlYWQtd3JpdGU="
@@ -60,5 +60,6 @@
         "unitTestRunner": "jest"
       }
     }
-  }
+  },
+  "defaultProject": "ant-music"
 }

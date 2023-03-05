@@ -3,8 +3,8 @@ import axios from '@ant-music/services/axios';
 // dotenv.config();
 
 const jwtAxios = axios.create({
-  // baseURL: process.env.API_ENDPOINT, //YOUR_API_URL HERE
-  baseURL: 'https://api-admin-ant.vercel.app', //YOUR_API_URL HERE
+  baseURL: process.env.NX_API_ENDPOINT, //YOUR_API_URL HERE
+  // baseURL: 'https://api-admin-ant.vercel.app', //YOUR_API_URL HERE
   headers: {
     'Content-Type': 'application/json',
   },

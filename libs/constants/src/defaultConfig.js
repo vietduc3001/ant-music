@@ -194,5 +194,6 @@ const defaultConfig = {
   layoutType: process.env.NX_LAYOUT_TYPE,
   footer: false,
   rtlLocale: ['ar'],
+  apiEndPoint: process.env.NX_API_ENDPOINT,
 };
 export default defaultConfig;
