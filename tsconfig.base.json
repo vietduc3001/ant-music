@@ -56,6 +56,21 @@
       "@ant-music/components/AppsContainer": [
         "libs/components/src/lib/AppsContainer/index.js"
       ],
+      "@ant-music/components/AppInfoView": [
+        "libs/components/src/lib/AppInfoView/index.js"
+      ],
+      "@ant-music/components/AppsHeader": [
+        "libs/components/src/lib/AppsContainer/AppsHeader.js"
+      ],
+      "@ant-music/components/AppsContent": [
+        "libs/components/src/lib/AppsContainer/AppsContent.js"
+      ],
+      "@ant-music/components/AppTableContainer": [
+        "libs/components/src/lib/AppTableContainer/index.js"
+      ],
+      "@ant-music/components/AppsPagination": [
+        "libs/components/src/lib/AppsPagination/index.js"
+      ],
 
       // =============================== constants =============================
       "@ant-music/constants": ["libs/constants/src/index.js"],
@@ -105,6 +120,7 @@
       ],
       "@ant-music/helpers/AuthHelper": ["libs/helpers/src/AuthHelper.js"],
       "@ant-music/helpers/IntlMessages": ["libs/helpers/src/IntlMessages.js"],
+      "@ant-music/helpers/MenuGenerator": ["libs/helpers/src/MenuGenerator.js"],
 
       // =============================== hooks =============================
       "@ant-music/hooks": ["libs/hooks/src/index.ts"],

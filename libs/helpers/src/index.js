@@ -5,3 +5,4 @@ export * from './Common';
 export * from './RouteHelper';
 // export * from './StringHelper';
 export * from './ThemeHelper';
+export * from './MenuGenerator';

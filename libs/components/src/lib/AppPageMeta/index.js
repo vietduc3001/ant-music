@@ -10,8 +10,8 @@ const SITE_URL =
 
 const FACEBOOK_APP_ID = 'XXXXXXXXX';
 
-const defaultTitle = process.env.APP_NAME;
-const defaultDescription = process.env.DEFAULT_DESCRIPTION;
+const defaultTitle = process.env.NX_APP_NAME;
+const defaultDescription = process.env.NX_DEFAULT_DESCRIPTION;
 const defaultImage =
   'https://firebasestorage.googleapis.com/v0/b/crema-demo.appspot.com/o/logo512.png?alt=media';
 const defaultTwitter = '@crema';

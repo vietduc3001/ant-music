@@ -13,10 +13,6 @@ import { useAuthUser } from '@ant-music/hooks/AuthHooks';
 const AppSidebar = ({ isCollapsed, routesConfig }) => {
   const { allowSidebarBgImage } = useSidebarContext();
   const { dataMenuCurrentUser } = useAuthUser();
-  console.log(
-    '🚀 ~ file: AppSidebar.js:16 ~ AppSidebar ~ dataMenuCurrentUser:',
-    dataMenuCurrentUser,
-  );
 
   return (
     <StyledMiniSidebarToggle

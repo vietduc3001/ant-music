@@ -21,6 +21,7 @@
   "common.forgetPasswordText": "Tell us your email.",
   "common.submit": "Submit",
   "common.notifications": "Notifications",
+  "common.create": "Create",
   "userProfile.myProfile": "My Profile",
   "userProfile.logout": "Logout",
   "validation.emailFormat": "The Email you entered is not a valid format!",

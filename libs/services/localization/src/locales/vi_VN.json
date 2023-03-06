@@ -22,6 +22,7 @@
   "common.forgetPasswordText": "Nhập địa chỉ email của bạn.",
   "common.submit": "Xác nhận",
   "common.notifications": "Thông báo",
+  "common.create": "Thêm mới",
   "userProfile.myProfile": "Tài khoản cá nhân",
   "userProfile.logout": "Đăng xuất",
   "validation.emailFormat": "Vui lòng nhập đúng định dạng email!",
