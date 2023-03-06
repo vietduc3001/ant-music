@@ -20,6 +20,9 @@
       "@ant-music/components/AppLogo": [
         "libs/components/src/lib/AppLayout/components/AppLogo/index.js"
       ],
+      "@ant-music/components/AppAnimateGroup": [
+        "libs/components/src/lib/AppAnimateGroup/index.js"
+      ],
       "@ant-music/components/AppLoader": [
         "libs/components/src/lib/AppLoader/index.js"
       ],
@@ -46,6 +49,12 @@
       ],
       "@ant-music/components/CustomComponents": [
         "libs/components/src/lib/CustomComponents/index.js"
+      ],
+      "@ant-music/components/AppThemeSetting": [
+        "libs/components/src/lib/AppThemeSetting/index.js"
+      ],
+      "@ant-music/components/AppsContainer": [
+        "libs/components/src/lib/AppsContainer/index.js"
       ],
 
       // =============================== constants =============================
@@ -85,6 +94,9 @@
       "@ant-music/context/ThemeContextProvider": [
         "libs/context/src/AppContextProvider/ThemeContextProvider.js"
       ],
+      "@ant-music/components/AppFooter": [
+        "libs/components/src/lib/AppLayout/components/AppFooter.js"
+      ],
 
       // =============================== helpers =============================
       "@ant-music/helpers": ["libs/helpers/src/index.js"],
@@ -108,6 +120,9 @@
       ],
       "@ant-music/modules/auth/SignUp": [
         "libs/modules/src/lib/auth/Signup/index.js"
+      ],
+      "@ant-music/modules/auth/ForgetPassword": [
+        "libs/modules/src/lib/auth/ForgotPassword/index.js"
       ],
 
       // =============================== services =============================

@@ -19,6 +19,10 @@ export const StyledSignUpForm = styled(Form)`
 
   & .form-field {
     margin-bottom: 20px;
+
+    & input {
+      font-size: ${({ theme }) => theme.font.size.lg};
+    }
   }
 
   & .form-btn-field {

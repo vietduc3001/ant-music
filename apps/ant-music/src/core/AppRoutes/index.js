@@ -4,17 +4,14 @@ import { Navigate } from 'react-router-dom';
 import { authRouteConfig } from './AuthRoutes';
 import Error403 from '../../modules/errorPages/Error403';
 import { errorPagesConfigs } from './ErrorPagesRoutes';
-// import {samplePagesConfigs} from './SamplePages';
 import { accountPagesConfigs } from './AccountRoutes';
+import { appsConfig } from './AppsRoutes';
 import { initialUrl, guestUrl } from '@ant-music/constants/AppConst';
 
 const authorizedStructure = {
   fallbackPath: '/signin',
   unAuthorizedComponent: <Error403 />,
-  routes: [
-    ...accountPagesConfigs,
-    // ...samplePagesConfigs
-  ],
+  routes: [...accountPagesConfigs, ...appsConfig],
 };
 
 const unAuthorizedStructure = {

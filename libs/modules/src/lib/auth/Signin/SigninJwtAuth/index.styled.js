@@ -40,7 +40,10 @@ export const StyledSignForm = styled(Form)`
 
   & .form-field {
     margin-bottom: 20px;
-    font-size: ${({ theme }) => theme.font.size.lg};
+
+    & input {
+      font-size: ${({ theme }) => theme.font.size.lg};
+    }
   }
 
   & .form-btn-field {

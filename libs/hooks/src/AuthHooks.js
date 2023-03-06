@@ -6,21 +6,25 @@ import {
 } from '@ant-music/services/auth/JWTAuthProvider';
 
 export const useAuthUser = () => {
-  const { user, isAuthenticated, isLoading } = useJWTAuth();
+  const { user, isAuthenticated, isLoading, dataMenuCurrentUser } =
+    useJWTAuth();
   return {
     isLoading,
     isAuthenticated,
     user: getUserFromJwtAuth(user),
+    dataMenuCurrentUser,
   };
 };
 
 export const useAuthMethod = () => {
-  const { signInUser, signUpUser, logout } = useJWTAuthActions();
+  const { signInUser, signUpUser, logout, sendMailForgetPassword } =
+    useJWTAuthActions();
 
   return {
     signInUser,
     logout,
     signUpUser,
+    sendMailForgetPassword,
   };
 };
 

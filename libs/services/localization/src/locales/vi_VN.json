@@ -18,6 +18,12 @@
   "common.forgetPasswordHeading": "Quên mật khẩu?",
   "common.email": "Email",
   "common.birthday": "Ngày sinh",
+  "common.alreadyHavePassword": "Đã có mật khẩu?",
+  "common.forgetPasswordText": "Nhập địa chỉ email của bạn.",
+  "common.submit": "Xác nhận",
+  "common.notifications": "Thông báo",
+  "userProfile.myProfile": "Tài khoản cá nhân",
+  "userProfile.logout": "Đăng xuất",
   "validation.emailFormat": "Vui lòng nhập đúng định dạng email!",
   "validation.emailRequired": "Vui lòng nhập Email!",
   "validation.passwordRequired": "Vui lòng nhập mật khẩu!",
@@ -30,5 +36,7 @@
   "validation.enterNewPassword": "Vui lòng nhập mật khẩu mới!",
   "validation.select": "Vui lòng chọn thông tin!",
   "validation.radio": "Vui lòng chọn thông tin!",
-  "validation.input": "Vui lòng nhập thông tin!"
+  "validation.input": "Vui lòng nhập thông tin!",
+  "apps.feature": "Chức năng",
+  "dashboard.messages": "Tin nhắn"
 }

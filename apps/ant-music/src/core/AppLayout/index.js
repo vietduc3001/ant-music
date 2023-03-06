@@ -37,6 +37,7 @@ const AppLayout = () => {
       <AppContentView routes={routes} />
     </AuthWrapper>
   );
+  // return <AppLayout routes={routes} routesConfig={routesConfig} />;
 };
 
 export default AppLayout;

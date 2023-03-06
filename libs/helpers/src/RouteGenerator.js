@@ -1,7 +1,7 @@
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { authRole } from '@ant-music/constants/AppConst';
 import { RoutePermittedRole } from '@ant-music/constants/AppEnums';
-import { checkPermission } from './RouteHelper';
 
 /**
  * @param {Object} structure - The passed object that defines the routes.
@@ -12,7 +12,7 @@ import { checkPermission } from './RouteHelper';
  * @param {object} [structure.unAuthorizedStructure] - it's an object that has [ fallbackPath: {string}, routes: {array} ], fallbackPath: is used for redirect when a logged [out] user tried to access route that requires [Authorization] , routes: only The Logged [out] Routes Available
  * @param {component} [structure.component fallbackComponent] - in order to redirect in all cases if the route doesn't match.
  * @param {unAuthorizedComponent} [structure.unAuthorizedComponent] - in order to show not permitted route.
- * @returns {Array} - [Array of routes]
+ * @returns {Array}
  */
 
 const generateRoutes = (structure) => {
@@ -24,7 +24,7 @@ const generateRoutes = (structure) => {
     userRole = authRole.User,
   } = structure || {};
 
-  let dynamicRoutes = [];
+  const dynamicRoutes = [];
 
   if (anonymousStructure) {
     dynamicRoutes.push(
@@ -76,12 +76,12 @@ const routesGenerator = (
   const isAuthorized = type === 'authorized';
 
   if (routeSet?.routes) {
-    const { routes } = routeSet;
+    const routes = routeSet.routes;
     if (Array.isArray(routes) && routes.length > 0) {
-      routes.forEach((route /* index */) => {
+      routes.forEach((route /*index*/) => {
         const {
           path = '',
-          permittedRole = RoutePermittedRole.Admin,
+          permittedRole = RoutePermittedRole.User,
           // routeProps = {},
           redirectPath = '',
           showRouteIf = true,
@@ -107,7 +107,7 @@ const routesGenerator = (
                 route.path.map((path) => {
                   generatedRoutes.push(
                     renderCondition
-                      ? checkPermission(permittedRole, userRole)
+                      ? userRole.indexOf(permittedRole) > -1
                         ? {
                             element: route.element,
                             path: path,
@@ -131,7 +131,7 @@ const routesGenerator = (
               } else {
                 generatedRoutes.push(
                   renderCondition
-                    ? checkPermission(permittedRole, userRole)
+                    ? userRole.indexOf(permittedRole) > -1
                       ? route
                       : {
                           path: route.path,
@@ -145,6 +145,7 @@ const routesGenerator = (
                       },
                 );
               }
+
               return generatedRoutes;
             }
             const renderCondition = isAuthorized

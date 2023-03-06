@@ -1,7 +1,3 @@
-import React from 'react';
+import { ForgetPasswordJwtAuth } from '@ant-music/modules/auth/ForgetPassword';
 
-const ForgetPassword = () => {
-  return <div>ForgetPassword</div>;
-};
-
-export default ForgetPassword;
+export default ForgetPasswordJwtAuth;

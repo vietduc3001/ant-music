@@ -2,6 +2,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import jwtAxios, { setAuthToken } from './index';
 import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const JWTAuthContext = createContext();
 const JWTAuthActionsContext = createContext();
@@ -20,7 +22,11 @@ const JWTAuthAuthProvider = ({
     user: null,
     isAuthenticated: false,
     isLoading: true,
+    dataMenuCurrentUser: [],
   });
+
+  // const getCurrentUser = jwtAxios.get('/users/info');
+  // const getMenuUser = jwtAxios.get('/feature/function-user');
 
   useEffect(() => {
     const getAuthUser = () => {
@@ -37,24 +43,34 @@ const JWTAuthAuthProvider = ({
         return;
       }
       setAuthToken(token);
-      // jwtAxios
-      //   .get('/auth/login')
-      //   .then(({ data }) => {
-      //     fetchSuccess();
-      //     setJWTAuthData({
-      //       user: data,
-      //       isLoading: false,
-      //       isAuthenticated: true,
-      //     });
-      //   })
-      //   .catch(() => {
-      //     setJWTAuthData({
-      //       user: undefined,
-      //       isLoading: false,
-      //       isAuthenticated: false,
-      //     });
-      //     fetchSuccess();
-      //   });
+      axios
+        .all([
+          jwtAxios.get('/users/info'),
+          jwtAxios.get('/feature/function-user'),
+        ])
+        .then((res) => {
+          fetchSuccess();
+          const dataCurrentUser = res[0]?.data || {};
+          const dataMenuUser = res[1]?.data || {};
+          setJWTAuthData({
+            ...jwtAuthData,
+            user:
+              (dataCurrentUser.data?.length > 0 && dataCurrentUser.data[0]) ||
+              {},
+            isLoading: false,
+            isAuthenticated: true,
+            dataMenuCurrentUser: dataMenuUser?.data || [],
+          });
+        })
+        .catch(() => {
+          setJWTAuthData({
+            user: undefined,
+            isLoading: false,
+            isAuthenticated: false,
+            dataMenuCurrentUser: [],
+          });
+          fetchSuccess();
+        });
     };
 
     getAuthUser();
@@ -64,6 +80,34 @@ const JWTAuthAuthProvider = ({
     fetchStart();
     try {
       const { data } = await jwtAxios.post('auth/login', { email, password });
+      localStorage.setItem('token', data.token);
+      setAuthToken(data.token);
+      const res = await jwtAxios.get('/users/info');
+      const resMenuUser = await jwtAxios.get('/feature/function-user');
+      const dataMenuCurrentUser = resMenuUser?.data?.data || [];
+      const user = (res?.data?.data?.length > 0 && res?.data?.data[0]) || {};
+      setJWTAuthData({
+        user,
+        isAuthenticated: true,
+        isLoading: false,
+        dataMenuCurrentUser,
+      });
+      fetchSuccess();
+    } catch (error) {
+      setJWTAuthData({
+        ...jwtAuthData,
+        isAuthenticated: false,
+        isLoading: false,
+        dataMenuCurrentUser: [],
+      });
+      fetchError(error?.response?.data?.error || 'Something went wrong');
+    }
+  };
+
+  const sendMailForgetPassword = async ({ email }) => {
+    fetchStart();
+    try {
+      const { data } = await jwtAxios.post('auth/login', { email });
       localStorage.setItem('token', data.token);
       setAuthToken(data.token);
       // const res = await jwtAxios.get('/auth/login');
@@ -140,6 +184,7 @@ const JWTAuthAuthProvider = ({
           signUpUser,
           signInUser,
           logout,
+          sendMailForgetPassword,
         }}
       >
         {children}

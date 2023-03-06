@@ -20,7 +20,7 @@ import {
   StyledSignTextGrey,
 } from './index.styled';
 
-const SignInJwtAuth1 = () => {
+const SignInJwtAuth = () => {
   const navigate = useNavigate();
   const { signInUser } = useAuthMethod();
 
@@ -54,21 +54,29 @@ const SignInJwtAuth1 = () => {
           <Form.Item
             name='email'
             className='form-field'
-            rules={[{ required: true, message: 'Please input your Email!' }]}
+            rules={[
+              { required: true, message: messages['validation.emailRequired'] },
+            ]}
           >
-            <TextField name='signin-email' label={messages['common.email']} />
-            {/* <Input placeholder={messages['common.email']} /> */}
+            {/* <TextField name='signin-email' label={messages['common.email']} /> */}
+            <Input placeholder={messages['common.email']} />
           </Form.Item>
 
           <Form.Item
             name='password'
             className='form-field'
-            rules={[{ required: true, message: 'Please input your Password!' }]}
+            rules={[
+              {
+                required: true,
+                message: messages['validation.passwordRequired'],
+              },
+            ]}
           >
-            <TextFieldPassword
+            {/* <TextFieldPassword
               name='signin-password'
               label={messages['common.password']}
-            />
+            /> */}
+            <Input.Password placeholder={messages['common.password']} />
           </Form.Item>
 
           <StyledRememberMe>
@@ -101,4 +109,4 @@ const SignInJwtAuth1 = () => {
   );
 };
 
-export default SignInJwtAuth1;
+export default SignInJwtAuth;

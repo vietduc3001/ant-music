@@ -2,10 +2,10 @@ const routesConfig = [
   {
     id: 'feature',
     title: 'Chức năng',
-    messageId: 'sidebar.app.dashboard.crypto',
+    messageId: 'apps.feature',
     type: 'item',
     // icon: <BsCurrencyBitcoin />,
-    url: '/feature',
+    path: '/feature',
   },
 ];
 

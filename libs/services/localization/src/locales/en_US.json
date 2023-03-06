@@ -17,6 +17,12 @@
   "common.forgetPasswordHeading": "Forget Password?",
   "common.email": "Email",
   "common.birthday": "Birthday",
+  "common.alreadyHavePassword": "Have password?",
+  "common.forgetPasswordText": "Tell us your email.",
+  "common.submit": "Submit",
+  "common.notifications": "Notifications",
+  "userProfile.myProfile": "My Profile",
+  "userProfile.logout": "Logout",
   "validation.emailFormat": "The Email you entered is not a valid format!",
   "validation.emailRequired": "Please enter Email Address!",
   "validation.passwordRequired": "Please enter password!",
@@ -29,5 +35,7 @@
   "validation.enterNewPassword": "Please enter new password!",
   "validation.select": "Please select information!",
   "validation.radio": "Please choose information!",
-  "validation.input": "Please enter information!"
+  "validation.input": "Please enter information!",
+  "apps.feature": "Function",
+  "dashboard.messages": "Messages"
 }
