@@ -2,26 +2,22 @@ import {
   FETCH_ERROR,
   FETCH_START,
   FETCH_SUCCESS,
-  GET_FEATURE,
-  UPDATE_FEATURE,
-  ADD_FEATURE,
-  GET_FEATURE_PARENT,
-  SET_FILTER_FEATURE_DATA,
+  GET_USER,
   SHOW_MESSAGE,
 } from '@ant-music/constants/ActionTypes';
 import jwtAxios from '@ant-music/services/auth/JWT';
 import { appIntl } from '@ant-music/helpers';
 
-export const getFeature = (filterData) => {
+export const getUser = (filterData) => {
   return (dispatch) => {
     dispatch({ type: FETCH_START });
     jwtAxios
-      .get('/feature/search-function', {
+      .get('/users/listaccounts', {
         params: filterData,
       })
       .then(({ data }) => {
         dispatch({ type: FETCH_SUCCESS });
-        dispatch({ type: GET_FEATURE, payload: data });
+        dispatch({ type: GET_USER, payload: data });
       })
       .catch((error) => {
         dispatch({ type: FETCH_ERROR, payload: error.message });
@@ -29,31 +25,7 @@ export const getFeature = (filterData) => {
   };
 };
 
-export const getFeatureParent = (filterData) => {
-  return (dispatch) => {
-    dispatch({ type: FETCH_START });
-    jwtAxios
-      .get('/feature/parent', {
-        params: { filterData },
-      })
-      .then(({ data }) => {
-        console.log('🚀 ~ file: Feature.js:23 ~ .then ~ data:', data);
-        dispatch({ type: FETCH_SUCCESS });
-        dispatch({ type: GET_FEATURE_PARENT, payload: data.result });
-      })
-      .catch((error) => {
-        dispatch({ type: FETCH_ERROR, payload: error.message });
-      });
-  };
-};
-
-export const setFilters = (filters) => {
-  return (dispatch) => {
-    dispatch({ type: SET_FILTER_FEATURE_DATA, payload: filters });
-  };
-};
-
-export const onUpdateSelectedFeature = (id, feature, onSuccess) => {
+export const onUpdateSelectedUser = (id, feature, onSuccess) => {
   return (dispatch) => {
     dispatch({ type: FETCH_START });
     jwtAxios
@@ -81,7 +53,7 @@ export const onUpdateSelectedFeature = (id, feature, onSuccess) => {
   };
 };
 
-export const onCreateFeature = (feature, onSuccess) => {
+export const onCreateUser = (feature, onSuccess) => {
   const { messages } = appIntl();
   return (dispatch) => {
     dispatch({ type: FETCH_START });

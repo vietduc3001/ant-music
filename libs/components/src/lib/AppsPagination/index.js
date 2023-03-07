@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StyledPagination } from './index.styled';
 
-const AppsPagination = ({ count, page, onChange, pageSize, className }) => {
+const AppsPagination = ({ count, current, onChange, pageSize, className }) => {
   return (
     <StyledPagination
       component='div'
       total={count}
       pageSize={pageSize}
       className={className}
-      page={page}
-      backIconButtonProps={{ 'aria-label': 'Previous Page' }}
-      nextIconButtonProps={{ 'aria-label': 'Next Page' }}
+      current={current}
+      backIconButtonProps={{ 'aria-label': 'Trang trước' }}
+      nextIconButtonProps={{ 'aria-label': 'Trang tiếp theo' }}
       onChange={onChange}
       rowsPerPageOptions={[]}
     />

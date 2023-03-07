@@ -1,4 +1,5 @@
 import { useIntl } from 'react-intl';
+import _ from 'lodash';
 
 export const getBreakPointsValue = (valueSet, breakpoint) => {
   if (typeof valueSet === 'number') return valueSet;
@@ -66,4 +67,22 @@ export function IntlGlobalProvider({ children }) {
 
 export const appIntl = () => {
   return intl;
+};
+
+export const removeNullChildren = (data = []) => {
+  let tempData = _.cloneDeep(data);
+  tempData = tempData.map((item) => {
+    const childLength = item?.children?.length || 0;
+    if (childLength > 0) {
+      return {
+        ...item,
+        childLength,
+        children: removeNullChildren(item?.children),
+      };
+    }
+    const newItem = { ...item };
+    delete newItem.children;
+    return newItem;
+  });
+  return tempData;
 };

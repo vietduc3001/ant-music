@@ -1,15 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledCustomerTable } from '../index.styled';
+import { StyledTable } from '../index.styled';
 import { Button } from 'antd';
 
-const CustomerTable = ({
-  featureList,
-  loading,
-  onEditFeature,
-  currentPage,
-  pageSize,
-}) => {
+const Table = ({ dataSource, loading, onEdit, currentPage, pageSize }) => {
   const columns = [
     {
       dataIndex: null,
@@ -45,14 +39,14 @@ const CustomerTable = ({
       fixed: 'right',
       width: '10%',
       render: (text, record) => (
-        <Button onClick={() => onEditFeature(record)}>Sửa</Button>
+        <Button onClick={() => onEdit(record)}>Sửa</Button>
       ),
     },
   ];
   return (
-    <StyledCustomerTable
+    <StyledTable
       hoverColor
-      data={featureList}
+      data={dataSource}
       columns={columns}
       loading={loading}
       scroll={{ x: 'auto' }}
@@ -60,13 +54,13 @@ const CustomerTable = ({
   );
 };
 
-export default CustomerTable;
+export default Table;
 
-CustomerTable.defaultProps = {
-  featureList: [],
+Table.defaultProps = {
+  dataSource: [],
 };
 
-CustomerTable.propTypes = {
-  featureList: PropTypes.array,
+Table.propTypes = {
+  dataSource: PropTypes.array,
   loading: PropTypes.bool,
 };

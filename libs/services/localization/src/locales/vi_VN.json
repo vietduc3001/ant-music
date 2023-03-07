@@ -23,6 +23,7 @@
   "common.submit": "Xác nhận",
   "common.notifications": "Thông báo",
   "common.create": "Thêm mới",
+  "common.edit": "Sửa thông tin",
   "userProfile.myProfile": "Tài khoản cá nhân",
   "userProfile.logout": "Đăng xuất",
   "validation.emailFormat": "Vui lòng nhập đúng định dạng email!",
@@ -39,5 +40,7 @@
   "validation.radio": "Vui lòng chọn thông tin!",
   "validation.input": "Vui lòng nhập thông tin!",
   "apps.feature": "Chức năng",
+  "apps.department": "Phòng ban",
+  "apps.user": "Người dùng",
   "dashboard.messages": "Tin nhắn"
 }

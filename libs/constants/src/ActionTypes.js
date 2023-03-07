@@ -145,8 +145,15 @@ export const UPDATE_CUSTOM_DATA = 'update_custom_data';
 //GALLERY
 export const GET_GALLERY_PHOTO = 'get_gallery_photo';
 
+// FEATURE
 export const GET_FEATURE = 'get_feature';
 export const UPDATE_FEATURE = 'update_feature';
 export const ADD_FEATURE = 'add_feature';
 export const GET_FEATURE_PARENT = 'get_feature_parent';
 export const SET_FILTER_FEATURE_DATA = 'set_filter_feature_data';
+
+// DEPARTMENT
+export const GET_DEPARTMENT = 'get_feature';
+
+// USER
+export const GET_USER = 'get_user';

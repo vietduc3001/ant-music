@@ -1,4 +1,4 @@
-import { Form } from 'antd';
+import { Form, Modal } from 'antd';
 import styled from 'styled-components';
 import AppsPagination from '@ant-music/components/AppsPagination';
 import AppTableContainer from '@ant-music/components/AppTableContainer';
@@ -48,16 +48,10 @@ export const StyledCustomerHeaderPagination = styled(AppsPagination)`
 export const StyledCustomerFooterPagination = styled(AppsPagination)`
   display: block;
   padding: 10px;
-  margin-left: auto;
-  /*
-  margin-top: -10px;
-  position: absolute;
-  bottom: 20px;
-  right: 20px; */
 
-  /* @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}px) {
     display: none;
-  } */
+  }
 `;
 
 export const StyledFeatureModalForm = styled(Form)`
@@ -145,5 +139,32 @@ export const StyledCustomerTable = styled(AppTableContainer)`
       margin-right: 0;
       margin-left: 8px;
     }
+  }
+`;
+
+export const StyledGroupButton = styled.div`
+  display: flex;
+  gap: 10px;
+
+  & button span {
+    margin-left: 5px;
+  }
+
+  & .permission-button {
+    background-color: ${({ theme }) => theme.palette.green[7]};
+    color: #fff;
+
+    &:hover {
+      color: #fff;
+      /* border: unset; */
+    }
+  }
+`;
+
+export const StyledFullScreenModal = styled(Modal)`
+  width: 100vw !important;
+  & .ant-modal-body {
+    max-height: 60vh;
+    overflow: auto;
   }
 `;

@@ -11,6 +11,7 @@ const SelectFeature = ({ placeholder }) => {
     setSearchQuery(e.target.value);
   };
   useEffect(() => {
+    // console.log('SelectFeature re-rendering');
     dispatch(getFeatureParent(search));
   }, [search]);
   return (

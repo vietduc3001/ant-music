@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import AppsPagination from '@ant-music/components/AppsPagination';
 import AppTableContainer from '@ant-music/components/AppTableContainer';
 
-export const StyledCustomerHeader = styled.div`
+export const StyledHeader = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -11,7 +11,7 @@ export const StyledCustomerHeader = styled.div`
   justify-content: space-between;
 `;
 
-export const StyledCustomerInputView = styled.div`
+export const StyledInputView = styled.div`
   max-width: 120px;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
@@ -19,7 +19,7 @@ export const StyledCustomerInputView = styled.div`
   }
 `;
 
-export const StyledCustomerHeaderRight = styled.div`
+export const StyledHeaderRight = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -31,7 +31,7 @@ export const StyledCustomerHeaderRight = styled.div`
   }
 `;
 
-export const StyledCustomerHeaderPagination = styled(AppsPagination)`
+export const StyledHeaderPagination = styled(AppsPagination)`
   display: none;
   padding-left: 12px;
   padding-right: 2px;
@@ -45,7 +45,7 @@ export const StyledCustomerHeaderPagination = styled(AppsPagination)`
     padding-right: 12px;
   }
 `;
-export const StyledCustomerFooterPagination = styled(AppsPagination)`
+export const StyledFooterPagination = styled(AppsPagination)`
   display: block;
   padding: 10px;
   margin-left: auto;
@@ -60,7 +60,7 @@ export const StyledCustomerFooterPagination = styled(AppsPagination)`
   } */
 `;
 
-export const StyledFeatureModalForm = styled(Form)`
+export const StyledModalForm = styled(Form)`
   position: relative;
 
   & .ant-form-item {
@@ -72,7 +72,7 @@ export const StyledFeatureModalForm = styled(Form)`
   }
 `;
 
-export const StyledCustomerTable = styled(AppTableContainer)`
+export const StyledTable = styled(AppTableContainer)`
   & .ant-table table {
     table-layout: auto !important;
   }

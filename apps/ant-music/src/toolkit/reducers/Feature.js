@@ -11,16 +11,18 @@ const initialState = {
   featureList: [],
   featureParentList: [],
   currentFeature: null,
-  featureCount: 0,
+  totalRecord: 0,
   filterData: {
     name: '',
   },
+  dataEdit: {},
 };
 
 const featureReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(GET_FEATURE, (state, action) => {
-      state.featureList = action.payload;
+      state.featureList = action.payload.data;
+      state.totalRecord = action.payload.total;
     })
     .addCase(GET_FEATURE_PARENT, (state, action) => {
       state.featureParentList = action.payload;
@@ -30,6 +32,9 @@ const featureReducer = createReducer(initialState, (builder) => {
     // })
     .addCase(SET_FILTER_FEATURE_DATA, (state, action) => {
       state.filterData = action.payload;
+    })
+    .addCase('setDataEditFeature', (state, action) => {
+      state.dataEdit = action.payload;
     });
   // .addCase(SET_PRODUCT_DATA, (state, action) => {
   //   state.currentProduct = action.payload;

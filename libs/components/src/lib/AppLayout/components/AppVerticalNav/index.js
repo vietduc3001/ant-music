@@ -42,8 +42,8 @@ const AppVerticalNav = ({ routesConfig, dataMenuCurrentUser }) => {
       openKeys={openKeys}
       onOpenChange={onOpenChange}
       defaultSelectedKeys={[selectedKeys[selectedKeys.length - 1]]}
-      // items={getRouteMenus(routesConfig)}
-      items={getRouteMenus(dataMenuCurrentUser)}
+      items={getRouteMenus(routesConfig)}
+      // items={getRouteMenus(dataMenuCurrentUser)}
     />
   );
 };

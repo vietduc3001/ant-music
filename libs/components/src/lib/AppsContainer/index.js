@@ -26,7 +26,7 @@ const AppsContainer = (props) => {
     children,
     actionContent,
   } = props;
-  console.log(actionContent);
+  // console.log(actionContent);
 
   return (
     <StyledAppWrap>

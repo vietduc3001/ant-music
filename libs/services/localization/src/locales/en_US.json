@@ -22,6 +22,7 @@
   "common.submit": "Submit",
   "common.notifications": "Notifications",
   "common.create": "Create",
+  "common.edit": "Edit",
   "userProfile.myProfile": "My Profile",
   "userProfile.logout": "Logout",
   "validation.emailFormat": "The Email you entered is not a valid format!",
@@ -38,5 +39,7 @@
   "validation.radio": "Please choose information!",
   "validation.input": "Please enter information!",
   "apps.feature": "Function",
+  "apps.department": "Department",
+  "apps.user": "User",
   "dashboard.messages": "Messages"
 }

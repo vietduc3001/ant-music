@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import AppsContainer from '@ant-music/components/AppsContainer';
-import { useIntl } from 'react-intl';
 import AppPageMeta from '@ant-music/components/AppPageMeta';
 import RenderMenuItem from '@ant-music/helpers/MenuGenerator';
 import AppsHeader from '@ant-music/components/AppsHeader';
@@ -17,53 +16,70 @@ import { useDispatch, useSelector } from 'react-redux';
 import FeatureTable from './FeatureTable';
 import { getFeature } from '../../../toolkit/actions';
 import CreateFeature from './CreateFeature';
+import { removeNullChildren } from '@ant-music/helpers';
+
+const PAGE_SIZE = 10;
 
 const Feature = () => {
-  const { messages } = useIntl();
   const dispatch = useDispatch();
-  const { featureList } = useSelector(({ feature }) => feature);
+  const { featureList = [], totalRecord } = useSelector(
+    ({ feature }) => feature,
+  );
   const { loading } = useSelector(({ common }) => common);
   const menuItem = RenderMenuItem('/feature');
 
-  const [page, setPage] = useState(1);
-  const [search, setSearchQuery] = useState('');
+  const [dataFilter, setDataFilter] = useState({
+    offset: 0,
+    limit: PAGE_SIZE,
+    keyword: '',
+  });
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedFeature, setSelectedFeature] = useState({});
 
-  const [form] = Form.useForm();
+  const newData = removeNullChildren([...featureList]);
 
-  const onChange = (page) => {
-    setPage(page);
+  const getListFeatures = () => {
+    dispatch(getFeature(dataFilter));
   };
+
+  const onChangePage = (page) => {
+    const offset = PAGE_SIZE * (page - 1);
+    const limit = PAGE_SIZE * page;
+    setDataFilter({
+      ...dataFilter,
+      offset,
+      limit,
+    });
+  };
+
+  const onSearch = (e) => {
+    setDataFilter({
+      ...dataFilter,
+      keyword: e.target.value,
+    });
+  };
+
   useEffect(() => {
     console.log('re-rendering');
-    dispatch(getFeature(search, page));
-  }, [search, page]);
-
-  const onSearchOrder = (e) => {
-    setSearchQuery(e.target.value);
-    setPage(0);
-  };
+    getListFeatures();
+  }, [dataFilter]);
 
   const showModal = () => {
     setIsModalVisible(true);
   };
 
-  const handleOk = () => {
+  const closeModal = () => {
     setIsModalVisible(false);
-    form.resetFields();
+    setSelectedFeature({});
   };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-    form.resetFields();
-  };
-
-  const [selectedFeature, setSelectedFeature] = useState({});
 
   const onEditFeature = (feature) => {
+    // console.log('🚀 ~ file: index.js:55 ~ onEditFeature ~ feature:', feature);
     setSelectedFeature(feature);
     showModal();
   };
+
+  const currentPage = dataFilter.limit / PAGE_SIZE;
 
   return (
     <>
@@ -76,7 +92,7 @@ const Feature = () => {
                 id='user-name'
                 placeholder='Tìm kiếm'
                 type='search'
-                onChange={onSearchOrder}
+                onChange={onSearch}
               />
             </StyledCustomerInputView>
             <StyledCustomerHeaderRight>
@@ -84,12 +100,12 @@ const Feature = () => {
                 Thêm chức năng
               </Button>
 
-              <StyledCustomerHeaderPagination
-                pageSize={10}
-                count={featureList.length}
-                page={page}
-                onChange={onChange}
-              />
+              {/* <StyledCustomerHeaderPagination
+                pageSize={PAGE_SIZE}
+                count={totalRecord}
+                current={currentPage}
+                onChange={onChangePage}
+              /> */}
             </StyledCustomerHeaderRight>
           </StyledCustomerHeader>
         </AppsHeader>
@@ -104,20 +120,29 @@ const Feature = () => {
           <FeatureTable
             onEditFeature={onEditFeature}
             loading={loading}
-            featureList={featureList}
+            featureList={newData}
+            currentPage={currentPage}
+            pageSize={PAGE_SIZE}
           />
         </AppsContent>
+
+        <StyledCustomerFooterPagination
+          key={'wrap2'}
+          pageSize={PAGE_SIZE}
+          count={totalRecord}
+          current={currentPage}
+          onChange={onChangePage}
+        />
       </AppsContainer>
 
-      <Modal
-        title={messages['common.create']}
-        open={isModalVisible}
-        onOk={handleOk}
-        footer={false}
-        onCancel={handleCancel}
-      >
-        <CreateFeature selectedFeature={selectedFeature} form={form} />
-      </Modal>
+      {isModalVisible ? (
+        <CreateFeature
+          isModalVisible={isModalVisible}
+          selectedFeature={selectedFeature}
+          closeModal={closeModal}
+          getListFeatures={getListFeatures}
+        />
+      ) : null}
     </>
   );
 };
