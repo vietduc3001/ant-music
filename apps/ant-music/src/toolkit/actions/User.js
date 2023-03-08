@@ -17,7 +17,7 @@ export const getUserList = (filterData) => {
       })
       .then(({ data }) => {
         dispatch({ type: FETCH_SUCCESS });
-        dispatch({ type: GET_USER, payload: data.data });
+        dispatch({ type: GET_USER, payload: data });
       })
       .catch((error) => {
         dispatch({ type: FETCH_ERROR, payload: error.message });

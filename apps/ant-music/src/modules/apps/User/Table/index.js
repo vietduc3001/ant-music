@@ -42,7 +42,7 @@ const Table = ({
       title: 'Email',
       dataIndex: 'email',
       key: 'email',
-      width: '17%',
+      width: '20%',
       responsive: ['lg'],
     },
     {
@@ -56,14 +56,15 @@ const Table = ({
       title: 'Vị trí',
       dataIndex: 'role',
       key: 'role',
-      width: '9%',
+      align: 'center',
+      width: '10%',
       render: (cell) => cell?.name || '',
     },
     {
       title: 'Trạng thái',
       dataIndex: 'isActive',
       key: 'isActive',
-      width: '8%',
+      width: '10%',
       align: 'center',
       responsive: ['lg'],
       render: (cell, record) => <StatusButton cell={cell} record={record} />,
@@ -86,6 +87,10 @@ const Table = ({
       ),
     },
   ];
+
+  const onChange = (value) => {
+    console.log('🚀 ~ file: index.js:92 ~ onChange ~ value:', value);
+  };
   return (
     <StyledTable
       hoverColor
@@ -93,6 +98,7 @@ const Table = ({
       columns={columns}
       loading={loading}
       scroll={{ x: 'auto' }}
+      rowSelection={{ onChange: onChange }}
     />
   );
 };

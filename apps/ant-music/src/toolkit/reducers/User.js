@@ -8,7 +8,8 @@ const initialState = {
 
 const userReducer = createReducer(initialState, (builder) => {
   builder.addCase(GET_USER, (state, action) => {
-    state.userList = action.payload;
+    state.userList = action.payload.data;
+    state.totalRecord = action.payload.total;
   });
 });
 

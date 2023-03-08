@@ -6,38 +6,40 @@ import { StyledActionsButton, StyledStatusButton } from '../index.styled';
 
 const styles = {
   '-1': {
-    color: 'white',
-    backgroundColor: '#f5222d',
+    color: '#F44D50',
+    backgroundColor: '#FEEEEE',
+    border: '#F44D50',
+    label: 'Khoá',
   },
   0: {
-    color: 'white',
-    backgroundColor: '#bfbfbf',
+    color: '#FFA940',
+    backgroundColor: '#FFF7EC',
+    border: '#FFA940',
+    label: 'Chưa xác minh',
   },
   1: {
-    color: 'white',
-    backgroundColor: '#faad14',
+    color: '#0A8FDC',
+    backgroundColor: '#E7F4FC',
+    border: '#0A8FDC',
+    label: 'Chờ kích hoạt',
   },
   2: {
-    color: 'white',
-    backgroundColor: '#389e0d',
+    color: '#72CC88',
+    backgroundColor: '#EDF9F0',
+    border: '#72CC88',
+    label: 'Kích hoạt',
   },
 };
 
 export const StatusButton = ({ cell, record }) => {
   return (
-    <StyledStatusButton styles={styles[cell]} value={cell}>
-      <Select.Option className='block' value={-1}>
-        Khoá
-      </Select.Option>
-      <Select.Option disabled className='pending-verify' value={0}>
-        Chưa xác minh
-      </Select.Option>
-      <Select.Option disabled className='pending-active' value={1}>
-        Chờ kích hoạt
-      </Select.Option>
-      <Select.Option className='active' value={2}>
-        Kích hoạt
-      </Select.Option>
+    <StyledStatusButton
+      disabled
+      suffixIcon={null}
+      styles={styles[cell]}
+      value={cell}
+    >
+      {styles[cell].label}
     </StyledStatusButton>
   );
 };
@@ -77,13 +79,13 @@ const Actions = ({ row, onEditPassword, onEdit, onDeleteUser }) => {
           ghost
         />
       </Tooltip>
-      <Tooltip title='Xoá'>
+      {/* <Tooltip title='Xoá'>
         <Button
           icon={<BsTrashFill />}
           onClick={() => onDeleteUser(row)}
           danger
         />
-      </Tooltip>
+      </Tooltip> */}
     </StyledActionsButton>
   );
 };

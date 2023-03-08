@@ -153,18 +153,12 @@ export const StyledSubmitFormButton = styled(Button)`
   margin-top: 15px;
 `;
 
-export const StyledStatusButton = styled(Select)`
-  width: 100%;
-  &.ant-select .ant-select-selector,
-  .ant-select-arrow {
-    background-color: ${({ styles }) => styles.backgroundColor}!important;
-    color: ${({ styles }) => styles.color}!important;
-    outline: unset;
-  }
-
-  /* .ant-select-selection-item {
-    text-align: center;
-  } */
+export const StyledStatusButton = styled.span`
+  background-color: ${({ styles }) => styles.backgroundColor}!important;
+  color: ${({ styles }) => styles.color}!important;
+  border: 1px solid ${({ styles }) => styles.border}!important;
+  padding: 4px 10px;
+  border-radius: 5px;
 `;
 
 export const StyledActionsButton = styled.div`
@@ -176,4 +170,6 @@ export const StyledActionsButton = styled.div`
 export const StyledSelectGroup = styled.div`
   flex: 1;
   margin-left: 10px;
+  display: flex;
+  gap: 10px;
 `;
