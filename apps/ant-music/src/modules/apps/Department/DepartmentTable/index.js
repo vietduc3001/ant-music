@@ -5,7 +5,14 @@ import { Button } from 'antd';
 import { BiEditAlt } from 'react-icons/bi';
 import { MdVerifiedUser } from 'react-icons/md';
 
-const CustomerTable = ({ data, loading, onEdit, onGrantPermission }) => {
+const CustomerTable = ({
+  data,
+  loading,
+  onEdit,
+  onGrantPermission,
+  currentPage,
+  pageSize,
+}) => {
   const Actions = ({ record }) => {
     return (
       <StyledGroupButton>
@@ -35,7 +42,7 @@ const CustomerTable = ({ data, loading, onEdit, onGrantPermission }) => {
       title: 'STT',
       align: 'center',
       width: '10%',
-      render: (text, record, index) => index + 1,
+      render: (text, record, index) => pageSize * (currentPage - 1) + index + 1,
     },
     {
       title: 'Tên phòng ban',

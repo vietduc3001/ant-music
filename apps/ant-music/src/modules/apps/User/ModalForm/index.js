@@ -1,28 +1,40 @@
-import React, { useEffect, useState } from 'react';
-
-import { Button, Form, Input, Modal, InputNumber } from 'antd';
-import { StyledFeatureModalForm } from '../index.styled';
-import SelectFeature from '../SelectFeature';
+import React from 'react';
+import dayjs from 'dayjs';
+import { Form, Input, Modal, Row, Col, DatePicker } from 'antd';
+import { StyledModalForm, StyledSubmitFormButton } from '../index.styled';
 import {
-  onCreateFeature,
-  onUpdateSelectedFeature,
+  onUpdateSelectedUser,
+  onCreateUser,
 } from '../../../../toolkit/actions';
 import { useDispatch } from 'react-redux';
 import { useIntl } from 'react-intl';
 
-const FeatureModal = ({
-  selectedFeature,
-  isModalVisible,
-  closeModal,
-  getListFeatures,
-}) => {
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 6 },
+    sm: { span: 6 },
+    md: { span: 6 },
+  },
+  wrapperCol: {
+    xs: { span: 'auto' },
+    sm: { span: 'auto' },
+    md: { span: 'auto' },
+  },
+  colon: false,
+  labelAlign: 'left',
+  style: { marginBottom: 10 },
+};
+
+const dateFormat = 'DD/MM/YYYY';
+
+const ModalForm = ({ dataEdit, isModalVisible, closeModal, getListData }) => {
   const { messages } = useIntl();
   const dispatch = useDispatch();
 
   const onSuccess = () => {
     console.log('🚀 ~ file: index.js:23 ~ onSuccess ~ onSuccess:');
     handleOk();
-    getListFeatures();
+    getListData();
   };
 
   const onFinish = (values) => {
@@ -30,14 +42,12 @@ const FeatureModal = ({
       ...values,
       parent: values.parent || 0,
     };
-    if (selectedFeature?.id) {
-      console.log('onUpdateSelectedFeature:', dataSubmit);
-      dispatch(
-        onUpdateSelectedFeature(selectedFeature?.id, dataSubmit, onSuccess),
-      );
+    if (dataEdit?.id) {
+      console.log('onUpdateSelected:', dataSubmit);
+      dispatch(onUpdateSelectedUser(dataEdit?.id, dataSubmit, onSuccess));
     } else {
-      console.log('onCreateFeature:', dataSubmit);
-      dispatch(onCreateFeature(dataSubmit, onSuccess));
+      console.log('onCreate:', dataSubmit);
+      dispatch(onCreateUser(dataSubmit, onSuccess));
     }
   };
 
@@ -56,76 +66,139 @@ const FeatureModal = ({
   };
 
   const [form] = Form.useForm();
-
   return (
     <Modal
-      title={messages['common.create']}
+      title={dataEdit.id ? messages['common.edit'] : messages['common.create']}
       open={isModalVisible}
       onOk={handleOk}
       footer={false}
       onCancel={handleCancel}
+      width={700}
     >
-      <StyledFeatureModalForm
+      <StyledModalForm
         name='basic'
+        autoComplete='off'
         initialValues={
-          selectedFeature
+          dataEdit
             ? {
-                ...selectedFeature,
+                ...dataEdit,
+                birthday:
+                  (dataEdit.birthday && dayjs(dataEdit.birthday, dateFormat)) ||
+                  dayjs(),
               }
-            : {}
+            : {
+                birthday: dayjs(),
+              }
         }
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         form={form}
       >
         <Form.Item
-          name='name'
-          rules={[{ required: true, message: 'Vui lòng nhập tên chức năng!' }]}
+          {...formItemLayout}
+          className='form-field'
+          name='lastname'
+          label={messages['common.lastName']}
+          rules={[
+            {
+              required: true,
+              message: messages['validation.lastNameRequired'],
+            },
+          ]}
         >
-          <Input placeholder='Tên chức năng' />
+          <Input placeholder={messages['common.lastName']} />
         </Form.Item>
 
         <Form.Item
-          name='parent'
-          // rules={[{ required: true, message: 'Vui lòng nhập tên chức năng!' }]}
+          {...formItemLayout}
+          className='form-field'
+          name='firstname'
+          label={messages['common.firstName']}
+          rules={[
+            {
+              required: true,
+              message: messages['validation.firstNameRequired'],
+            },
+          ]}
         >
-          <SelectFeature placeholder='Chức năng cấp trên' />
+          <Input placeholder={messages['common.firstName']} />
         </Form.Item>
 
         <Form.Item
-          name='icon'
-          // rules={[{ required: true, message: 'Please input your email!' }]}
+          {...formItemLayout}
+          className='form-field'
+          label={messages['common.email']}
+          name='email'
+          rules={[{ required: true, message: 'Please input your Phone!' }]}
         >
-          <Input placeholder='icon' />
+          <Input placeholder={messages['common.email']} />
         </Form.Item>
 
         <Form.Item
-          name='pathname'
-          rules={[{ required: true, message: 'Vui lòng nhập đường dẫn!' }]}
+          {...formItemLayout}
+          className='form-field'
+          // name='birthday'
+          label={messages['common.birthday']}
         >
-          <Input placeholder='Đường dẫn' />
-        </Form.Item>
-
-        <Form.Item
-          name='location'
-          rules={[{ required: true, message: 'Vui lòng nhập vị trí!' }]}
-        >
-          <InputNumber
+          <DatePicker
             style={{ width: '100%' }}
-            min={1}
-            placeholder='Nhập vị trí'
-            step={1}
+            format='DD/MM/YYYY'
+            placeholder={messages['common.birthday']}
           />
         </Form.Item>
 
+        <Row gutter={15}>
+          <Col hidden={dataEdit?.id} xs={24}>
+            <Form.Item
+              {...formItemLayout}
+              name='newPassword'
+              className='form-field'
+              rules={[
+                {
+                  required: true,
+                  message: messages['validation.typePassword'],
+                },
+              ]}
+              label={messages['common.password']}
+            >
+              <Input.Password placeholder={messages['common.password']} />
+            </Form.Item>
+
+            <Form.Item
+              {...formItemLayout}
+              name='confirmPassword'
+              className='form-field'
+              rules={[
+                {
+                  required: true,
+                  message: messages['validation.reTypePassword'],
+                },
+                ({ getFieldValue }) => ({
+                  validator(rule, value) {
+                    if (!value || getFieldValue('password') === value) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(
+                      messages['validation.passwordMisMatch'],
+                    );
+                  },
+                }),
+              ]}
+              label={messages['common.retypePassword']}
+            >
+              <Input.Password placeholder={messages['common.retypePassword']} />
+            </Form.Item>
+          </Col>
+        </Row>
+
         <Form.Item>
-          <Button style={{ float: 'right' }} type='primary' htmlType='submit'>
+          <StyledSubmitFormButton type='primary' htmlType='submit'>
             Lưu
-          </Button>
+          </StyledSubmitFormButton>
         </Form.Item>
-      </StyledFeatureModalForm>
+      </StyledModalForm>
     </Modal>
   );
 };
 
-export default FeatureModal;
+export default ModalForm;

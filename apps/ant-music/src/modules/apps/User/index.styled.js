@@ -1,4 +1,4 @@
-import { Form } from 'antd';
+import { Button, Form, Select } from 'antd';
 import styled from 'styled-components';
 import AppsPagination from '@ant-music/components/AppsPagination';
 import AppTableContainer from '@ant-music/components/AppTableContainer';
@@ -12,10 +12,10 @@ export const StyledHeader = styled.div`
 `;
 
 export const StyledInputView = styled.div`
-  max-width: 120px;
+  max-width: 150px;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
-    max-width: 150px;
+    max-width: 200px;
   }
 `;
 
@@ -146,4 +146,34 @@ export const StyledTable = styled(AppTableContainer)`
       margin-left: 8px;
     }
   }
+`;
+
+export const StyledSubmitFormButton = styled(Button)`
+  float: right;
+  margin-top: 15px;
+`;
+
+export const StyledStatusButton = styled(Select)`
+  width: 100%;
+  &.ant-select .ant-select-selector,
+  .ant-select-arrow {
+    background-color: ${({ styles }) => styles.backgroundColor}!important;
+    color: ${({ styles }) => styles.color}!important;
+    outline: unset;
+  }
+
+  /* .ant-select-selection-item {
+    text-align: center;
+  } */
+`;
+
+export const StyledActionsButton = styled.div`
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+`;
+
+export const StyledSelectGroup = styled.div`
+  flex: 1;
+  margin-left: 10px;
 `;

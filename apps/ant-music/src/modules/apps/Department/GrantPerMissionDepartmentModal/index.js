@@ -2,17 +2,16 @@ import React, { useEffect, useState } from 'react';
 
 import { Button, Form, Input, Modal } from 'antd';
 import { StyledFullScreenModal, StyledCustomerTable } from '../index.styled';
-import { getAllFunctionsByDepartment } from '../../../../toolkit/actions';
+import {
+  getAllFunctionsByDepartment,
+  onUpdateFunctionDepartment,
+} from '../../../../toolkit/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useIntl } from 'react-intl';
-import { removeNullChildren } from '@ant-music/helpers';
+import { removeNullChildren, flattenData } from '@ant-music/helpers';
+import FunctionTable from './FunctionTable';
 
-const DepartmentModal = ({
-  dataEdit,
-  isModalVisible,
-  closeModal,
-  getListData,
-}) => {
+const DepartmentModal = ({ dataEdit, isModalVisible, closeModal }) => {
   const { loading } = useSelector(({ common }) => common);
   const { messages } = useIntl();
   const [dataFunctions, setDataFunctions] = useState([]);
@@ -26,30 +25,29 @@ const DepartmentModal = ({
   // function
 
   function onSuccess(data) {
-    console.log('🚀 ~ file: index.js:22 ~ onSuccess ~ onSuccess:', data);
-    // handleOk();
-    // getListData();
     const newData = removeNullChildren([...data]);
+    const newDataFlatten = flattenData(newData);
+    const newSelectedRowKeys = newDataFlatten
+      .filter((item) => item.access === true)
+      .map((item) => item.id);
     setDataFunctions(newData);
+    setSelectedRowKeys(newSelectedRowKeys);
   }
 
-  const onFinish = (values) => {
-    const dataSubmit = {
-      ...values,
-    };
-    // if (dataEdit?.id) {
-    //   dispatch(onUpdateSelectedDepartment(dataEdit?.id, dataSubmit, onSuccess));
-    // } else {
-    //   dispatch(onCreateDepartment(dataSubmit, onSuccess));
-    // }
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+  const onUpdateFunctionDepartmentSuccess = () => {
+    closeModal();
   };
 
   const handleOk = () => {
-    closeModal();
+    // closeModal();
+    console.log('selectedRowKeys', selectedRowKeys);
+    dispatch(
+      onUpdateFunctionDepartment(
+        dataEdit.id,
+        selectedRowKeys,
+        onUpdateFunctionDepartmentSuccess,
+      ),
+    );
   };
 
   const handleCancel = () => {
@@ -85,10 +83,8 @@ const DepartmentModal = ({
     },
   ];
 
-  const rowSelection = {
-    // selectedRowKeys,
-    // onSelect: this.onSelectedRowKeysSelect,
-    // onSelectAll: this.onSelectAll,
+  const handleChangeSelectedRowKeys = (newSelectedRowKeys) => {
+    setSelectedRowKeys(newSelectedRowKeys);
   };
 
   return (
@@ -99,13 +95,12 @@ const DepartmentModal = ({
       // footer={false}
       onCancel={handleCancel}
     >
-      <StyledCustomerTable
-        hoverColor
-        data={dataFunctions}
+      <FunctionTable
+        dataFunctions={dataFunctions}
         columns={columns}
         loading={loading}
-        scroll={{ x: 'auto' }}
-        rowSelection={rowSelection}
+        selectedRowKeys={selectedRowKeys}
+        handleChangeSelectedRowKeys={handleChangeSelectedRowKeys}
       />
     </StyledFullScreenModal>
   );

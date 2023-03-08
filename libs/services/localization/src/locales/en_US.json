@@ -23,6 +23,7 @@
   "common.notifications": "Notifications",
   "common.create": "Create",
   "common.edit": "Edit",
+  "common.phone": "Phone",
   "userProfile.myProfile": "My Profile",
   "userProfile.logout": "Logout",
   "validation.emailFormat": "The Email you entered is not a valid format!",
@@ -41,5 +42,7 @@
   "apps.feature": "Function",
   "apps.department": "Department",
   "apps.user": "User",
-  "dashboard.messages": "Messages"
+  "dashboard.messages": "Messages",
+  "message.somethingWentWrong": "Something went wrong, Please try again!",
+  "message.successfully": "Update successfully!"
 }

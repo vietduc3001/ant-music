@@ -6,7 +6,7 @@ import AppsHeader from '@ant-music/components/AppsHeader';
 import AppsContent from '@ant-music/components/AppsContent';
 import {
   StyledCustomerHeader,
-  StyledCustomerHeaderPagination,
+  StyledCustomerFooterPagination,
   StyledCustomerHeaderRight,
   StyledCustomerInputView,
 } from './index.styled';
@@ -16,7 +16,7 @@ import { getDepartment } from '../../../toolkit/actions';
 
 import DepartmentTable from './DepartmentTable';
 import DepartmentModal from './DepartmentModal';
-import GrantPerMissionDepartmentModal from './GrantPerMissionDepartmentModal';
+import GrantPermissionDepartmentModal from './GrantPermissionDepartmentModal';
 
 const PAGE_SIZE = 10;
 
@@ -25,29 +25,41 @@ const Department = () => {
   const { loading } = useSelector(({ common }) => common);
   const menuItem = RenderMenuItem('/department');
 
-  const [page, setPage] = useState(1);
-  const [search, setSearchQuery] = useState('');
+  const [dataFilter, setDataFilter] = useState({
+    offset: 0,
+    limit: PAGE_SIZE,
+    keyword: '',
+  });
+
+  const onChangePage = (page) => {
+    const offset = PAGE_SIZE * (page - 1);
+    const limit = PAGE_SIZE * page;
+    setDataFilter({
+      ...dataFilter,
+      offset,
+      limit,
+    });
+  };
+
+  const onSearch = (e) => {
+    setDataFilter({
+      ...dataFilter,
+      keyword: e.target.value,
+    });
+  };
+
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalGrantPermissionVisible, setIsModalGrantPermissionVisible] =
     useState(false);
   const [dataEdit, setDataEdit] = useState({});
 
   const getListData = () => {
-    dispatch(getDepartment());
-  };
-
-  const onChange = (page) => {
-    setPage(page);
+    dispatch(getDepartment(dataFilter));
   };
 
   useEffect(() => {
     getListData();
-  }, [search, page]);
-
-  const onSearchOrder = (e) => {
-    setSearchQuery(e.target.value);
-    setPage(0);
-  };
+  }, [dataFilter]);
 
   // ====================== Chinh sua thong tin phong ban ==============================
   const closeModal = () => {
@@ -71,9 +83,12 @@ const Department = () => {
     setDataEdit({});
   };
 
-  const { departmentList = [] } = useSelector(({ department }) => department);
+  const { departmentList = [], totalRecord } = useSelector(
+    ({ department }) => department,
+  );
 
   let dataSource = loading ? [] : departmentList;
+  const currentPage = dataFilter.limit / PAGE_SIZE;
 
   return (
     <>
@@ -86,20 +101,13 @@ const Department = () => {
                 id='user-name'
                 placeholder='Tìm kiếm'
                 type='search'
-                onChange={onSearchOrder}
+                onChange={onSearch}
               />
             </StyledCustomerInputView>
             <StyledCustomerHeaderRight>
               <Button type='primary' onClick={onEdit}>
                 Thêm phòng ban
               </Button>
-
-              <StyledCustomerHeaderPagination
-                pageSize={PAGE_SIZE}
-                count={departmentList.length}
-                page={page}
-                onChange={onChange}
-              />
             </StyledCustomerHeaderRight>
           </StyledCustomerHeader>
         </AppsHeader>
@@ -116,10 +124,18 @@ const Department = () => {
             onGrantPermission={onGrantPermission}
             loading={loading}
             data={dataSource}
-            page={page}
+            currentPage={currentPage}
             pageSize={PAGE_SIZE}
           />
         </AppsContent>
+
+        <StyledCustomerFooterPagination
+          key={'wrap2'}
+          pageSize={PAGE_SIZE}
+          count={totalRecord}
+          current={currentPage}
+          onChange={onChangePage}
+        />
       </AppsContainer>
 
       {isModalVisible ? (
@@ -132,7 +148,7 @@ const Department = () => {
       ) : null}
 
       {isModalGrantPermissionVisible ? (
-        <GrantPerMissionDepartmentModal
+        <GrantPermissionDepartmentModal
           isModalVisible={isModalGrantPermissionVisible}
           dataEdit={dataEdit}
           closeModal={onCloseGrantPermissionModal}

@@ -112,6 +112,9 @@
       "@ant-music/components/AppFooter": [
         "libs/components/src/lib/AppLayout/components/AppFooter.js"
       ],
+      "@ant-music/components/AppConfirmationModal": [
+        "libs/components/src/lib/AppConfirmationModal/index.js"
+      ],
 
       // =============================== helpers =============================
       "@ant-music/helpers": ["libs/helpers/src/index.js"],

@@ -12,12 +12,34 @@ export const getDepartment = (filterData) => {
   return (dispatch) => {
     dispatch({ type: FETCH_START });
     jwtAxios
-      .get('/department/all', {
+      .get('/department/list', {
         params: { ...filterData },
       })
       .then(({ data }) => {
         dispatch({ type: FETCH_SUCCESS });
-        dispatch({ type: GET_DEPARTMENT, payload: data.data });
+        dispatch({ type: GET_DEPARTMENT, payload: data });
+      })
+      .catch((error) => {
+        dispatch({ type: FETCH_ERROR, payload: error.message });
+      });
+  };
+};
+
+export const getDepartmentNotSaveRedux = (onSuccess) => {
+  return (dispatch) => {
+    dispatch({ type: FETCH_START });
+    jwtAxios
+      .get(
+        '/department/list',
+        // {
+        //   params: { ...filterData },
+        // }
+      )
+      .then(({ data }) => {
+        dispatch({ type: FETCH_SUCCESS });
+        if (onSuccess) {
+          onSuccess(data.data);
+        }
       })
       .catch((error) => {
         dispatch({ type: FETCH_ERROR, payload: error.message });
@@ -95,6 +117,37 @@ export const getAllFunctionsByDepartment = (id, onSuccess) => {
       .then(({ data }) => {
         dispatch({ type: FETCH_SUCCESS });
         onSuccess(data.data);
+      })
+      .catch((error) => {
+        dispatch({ type: FETCH_ERROR, payload: error.message });
+      });
+  };
+};
+
+export const onUpdateFunctionDepartment = (id, dataUpdate, onSuccess) => {
+  const { messages } = appIntl();
+  return (dispatch) => {
+    dispatch({ type: FETCH_START });
+    jwtAxios
+      .post(`/department/edit/${id}`, dataUpdate)
+      .then((res) => {
+        if (res.status >= 200 && res.status < 300) {
+          dispatch({ type: FETCH_SUCCESS });
+          if (onSuccess) {
+            onSuccess();
+          }
+          dispatch({
+            type: SHOW_MESSAGE,
+            payload:
+              res.data?.message || messages['message.somethingWentWrong'],
+          });
+        } else {
+          dispatch({
+            type: FETCH_ERROR,
+            payload:
+              res.data?.message || messages['message.somethingWentWrong'],
+          });
+        }
       })
       .catch((error) => {
         dispatch({ type: FETCH_ERROR, payload: error.message });

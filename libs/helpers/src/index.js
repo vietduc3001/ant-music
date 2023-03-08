@@ -6,3 +6,4 @@ export * from './RouteHelper';
 // export * from './StringHelper';
 export * from './ThemeHelper';
 export * from './MenuGenerator';
+export * from './ArrayHelper';

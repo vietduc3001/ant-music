@@ -48,10 +48,11 @@ export const StyledCustomerHeaderPagination = styled(AppsPagination)`
 export const StyledCustomerFooterPagination = styled(AppsPagination)`
   display: block;
   padding: 10px;
+  margin-left: auto;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}px) {
+  /* @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}px) {
     display: none;
-  }
+  } */
 `;
 
 export const StyledFeatureModalForm = styled(Form)`

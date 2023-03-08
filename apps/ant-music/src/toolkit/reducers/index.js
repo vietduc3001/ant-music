@@ -3,6 +3,7 @@ import Settings from './Setting';
 import Common from './Common';
 import Feature from './Feature';
 import Department from './Department';
+import User from './User';
 
 const reducers = () =>
   combineReducers({
@@ -10,6 +11,7 @@ const reducers = () =>
     common: Common,
     feature: Feature,
     department: Department,
+    user: User,
   });
 
 export default reducers;
