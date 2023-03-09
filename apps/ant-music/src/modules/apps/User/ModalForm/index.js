@@ -8,6 +8,8 @@ import {
 } from '../../../../toolkit/actions';
 import { useDispatch } from 'react-redux';
 import { useIntl } from 'react-intl';
+import DepartmentSelect from '../../../../components/Select/DepartmentSelect';
+import RoleSelect from '../../../../components/Select/RoleSelect';
 
 const formItemLayout = {
   labelCol: {
@@ -28,6 +30,7 @@ const formItemLayout = {
 const dateFormat = 'DD/MM/YYYY';
 
 const ModalForm = ({ dataEdit, isModalVisible, closeModal, getListData }) => {
+  console.log('🚀 ~ file: index.js:33 ~ ModalForm ~ dataEdit:', dataEdit);
   const { messages } = useIntl();
   const dispatch = useDispatch();
 
@@ -66,9 +69,13 @@ const ModalForm = ({ dataEdit, isModalVisible, closeModal, getListData }) => {
   };
 
   const [form] = Form.useForm();
+  let title = messages['common.create'];
+  if (dataEdit.id) {
+    title = `${messages['common.edit']} tài khoản ${dataEdit.email}`;
+  }
   return (
     <Modal
-      title={dataEdit.id ? messages['common.edit'] : messages['common.create']}
+      title={title}
       open={isModalVisible}
       onOk={handleOk}
       footer={false}
@@ -83,8 +90,9 @@ const ModalForm = ({ dataEdit, isModalVisible, closeModal, getListData }) => {
             ? {
                 ...dataEdit,
                 birthday:
-                  (dataEdit.birthday && dayjs(dataEdit.birthday, dateFormat)) ||
-                  dayjs(),
+                  (dataEdit.birthday && dayjs(dataEdit.birthday)) || dayjs(),
+                department: dataEdit?.department?.name,
+                role: dataEdit?.role?.name,
               }
             : {
                 birthday: dayjs(),
@@ -129,7 +137,9 @@ const ModalForm = ({ dataEdit, isModalVisible, closeModal, getListData }) => {
           className='form-field'
           label={messages['common.email']}
           name='email'
-          rules={[{ required: true, message: 'Please input your Phone!' }]}
+          rules={[
+            { required: true, message: messages['validation.emailRequired'] },
+          ]}
         >
           <Input placeholder={messages['common.email']} />
         </Form.Item>
@@ -137,7 +147,30 @@ const ModalForm = ({ dataEdit, isModalVisible, closeModal, getListData }) => {
         <Form.Item
           {...formItemLayout}
           className='form-field'
-          // name='birthday'
+          label={messages['common.department']}
+          name='department'
+          rules={[{ required: true, message: messages['validation.select'] }]}
+        >
+          <DepartmentSelect
+            width='100%'
+            placeholder={messages['common.department']}
+          />
+        </Form.Item>
+
+        <Form.Item
+          {...formItemLayout}
+          className='form-field'
+          label={messages['common.role']}
+          name='role'
+          rules={[{ required: true, message: messages['validation.select'] }]}
+        >
+          <RoleSelect width='100%' placeholder={messages['common.role']} />
+        </Form.Item>
+
+        <Form.Item
+          {...formItemLayout}
+          className='form-field'
+          name='birthday'
           label={messages['common.birthday']}
         >
           <DatePicker
@@ -193,7 +226,7 @@ const ModalForm = ({ dataEdit, isModalVisible, closeModal, getListData }) => {
 
         <Form.Item>
           <StyledSubmitFormButton type='primary' htmlType='submit'>
-            Lưu
+            Đồng ý
           </StyledSubmitFormButton>
         </Form.Item>
       </StyledModalForm>

@@ -12,6 +12,7 @@ const Table = ({
   pageSize,
   onEditPassword,
   onDeleteUser,
+  handleChangeUserSelection,
 }) => {
   const columns = [
     {
@@ -19,7 +20,7 @@ const Table = ({
       title: 'STT',
       align: 'center',
       width: '5%',
-      fixed: 'left',
+      // fixed: 'left',
       render: (text, record, index) => pageSize * (currentPage - 1) + index + 1,
     },
     {
@@ -27,7 +28,7 @@ const Table = ({
       dataIndex: 'name',
       key: 'name',
       width: '20%',
-      fixed: 'left',
+      // fixed: 'left',
       render: (_, record) => `${record.lastname} ${record.firstname}`,
     },
     {
@@ -74,7 +75,7 @@ const Table = ({
       dataIndex: 'actions',
       key: 'actions',
       // className: 'customer-table-actions',
-      fixed: 'right',
+      // fixed: 'right',
       align: 'center',
       width: '10%',
       render: (_, row) => (
@@ -96,9 +97,9 @@ const Table = ({
       hoverColor
       data={dataSource}
       columns={columns}
-      loading={loading}
+      loading={{ spinning: loading, indicator: null }}
       scroll={{ x: 'auto' }}
-      rowSelection={{ onChange: onChange }}
+      rowSelection={{ onChange: handleChangeUserSelection }}
     />
   );
 };

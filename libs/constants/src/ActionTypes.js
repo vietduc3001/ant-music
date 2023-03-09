@@ -157,3 +157,18 @@ export const GET_DEPARTMENT = 'get_feature';
 
 // USER
 export const GET_USER = 'get_user';
+
+// GENRE
+export const GET_GENRE = 'get_genre';
+
+// THEME
+export const GET_THEME = 'get_theme';
+
+// MOOD
+export const GET_MOOD = 'get_mood';
+
+// EFFECT
+export const GET_EFFECT = 'get_effect';
+
+// INSTRUMENTS
+export const GET_INSTRUMENT = 'get_instrument';

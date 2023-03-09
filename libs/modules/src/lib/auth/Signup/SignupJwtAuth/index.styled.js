@@ -20,7 +20,8 @@ export const StyledSignUpForm = styled(Form)`
   & .form-field {
     margin-bottom: 20px;
 
-    & input {
+    & input,
+    .ant-select-selector {
       font-size: ${({ theme }) => theme.font.size.lg};
     }
   }

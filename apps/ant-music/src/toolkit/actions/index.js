@@ -3,3 +3,8 @@ export * from './Setting';
 export * from './Feature';
 export * from './Department';
 export * from './User';
+export * from './Genre';
+export * from './Theme';
+export * from './Effect';
+export * from './Mood';
+export * from './Instrument';

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Checkbox, Col, DatePicker, Form, Input, Row } from 'antd';
+import { Col, DatePicker, Form, Input, Row } from 'antd';
 import IntlMessages from '@ant-music/helpers/IntlMessages';
 import { useIntl } from 'react-intl';
 import { useAuthMethod } from '@ant-music/hooks/AuthHooks';
@@ -7,18 +7,17 @@ import {
   StyledSignLinkTag,
   StyledSignUp,
   StyledSignUpBtn,
-  StyledSignupCheckBox,
   StyledSignUpContent,
   StyledSignUpForm,
-  StyledSignupLink,
   StyledSignUpTestGrey,
 } from './index.styled';
 import {
   TextField,
   TextFieldPassword,
 } from '@ant-music/components/CustomComponents';
+import { validatePassword, validateEmail } from '@ant-music/helpers';
 
-const SignupJwtAuth = () => {
+const SignupJwtAuth = ({ DepartmentSelect, RoleSelect }) => {
   const formRef = useRef(null);
   const { messages } = useIntl();
   const { signUpUser } = useAuthMethod();
@@ -55,7 +54,7 @@ const SignupJwtAuth = () => {
           <Row gutter={10}>
             <Col xs={24} md={12}>
               <Form.Item
-                name='lastName'
+                name='lastname'
                 className='form-field'
                 rules={[
                   {
@@ -73,7 +72,7 @@ const SignupJwtAuth = () => {
             </Col>
             <Col xs={24} md={12}>
               <Form.Item
-                name='firstName'
+                name='firstname'
                 className='form-field'
                 rules={[
                   {
@@ -96,6 +95,15 @@ const SignupJwtAuth = () => {
             className='form-field'
             rules={[
               { required: true, message: messages['validation.emailRequired'] },
+              {
+                validator: (rule, value, callback) =>
+                  validateEmail(
+                    rule,
+                    value,
+                    callback,
+                    messages['validation.emailFormat'],
+                  ),
+              },
             ]}
           >
             <Input type='email' placeholder={messages['common.email']} />
@@ -119,6 +127,13 @@ const SignupJwtAuth = () => {
             />
             {/* <TextField name='signup-email' label={messages['common.email']} /> */}
           </Form.Item>
+          <Form.Item
+            className='form-field'
+            name='department'
+            rules={[{ required: true, message: messages['validation.select'] }]}
+          >
+            {DepartmentSelect}
+          </Form.Item>
 
           <Form.Item
             name='password'
@@ -127,6 +142,15 @@ const SignupJwtAuth = () => {
               {
                 required: true,
                 message: messages['validation.passwordRequired'],
+              },
+              {
+                validator: (rule, value, callback) =>
+                  validatePassword(
+                    rule,
+                    value,
+                    callback,
+                    messages['validation.passwordFormat'],
+                  ),
               },
             ]}
           >

@@ -7,11 +7,10 @@ import AppsContent from '@ant-music/components/AppsContent';
 import {
   StyledCustomerFooterPagination,
   StyledCustomerHeader,
-  StyledCustomerHeaderPagination,
   StyledCustomerHeaderRight,
   StyledCustomerInputView,
 } from './index.styled';
-import { Button, Form, Input, Modal } from 'antd';
+import { Button, Input } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import FeatureTable from './FeatureTable';
 import { getFeature } from '../../../toolkit/actions';

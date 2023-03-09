@@ -1,6 +1,6 @@
 import React from 'react';
 // import { RoutePermittedRole } from '@ant-music/constants/AppEnums';
-import Account from '../../modules/account/MyProfile';
+import Account from '../../modules/myProfile';
 
 export const accountPagesConfigs = [
   {

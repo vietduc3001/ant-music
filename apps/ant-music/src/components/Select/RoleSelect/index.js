@@ -8,6 +8,8 @@ const RoleSelect = ({
   width = '200px',
   placeholder = 'Chọn vị trí',
   allowClear = true,
+  value = undefined,
+  ...restProps
 }) => {
   const dispatch = useDispatch();
 
@@ -29,6 +31,8 @@ const RoleSelect = ({
       placeholder={placeholder}
       onChange={onChange}
       allowClear={allowClear}
+      value={value}
+      {...restProps}
     >
       {dataSelect.map((data) => (
         <Select.Option value={data.name}>{data.name}</Select.Option>

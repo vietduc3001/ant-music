@@ -8,6 +8,8 @@ const DepartmentSelect = ({
   width = '200px',
   placeholder = 'Chọn phòng ban',
   allowClear = true,
+  value = undefined,
+  ...restProps
 }) => {
   const dispatch = useDispatch();
 
@@ -29,6 +31,8 @@ const DepartmentSelect = ({
       placeholder={placeholder}
       onChange={onChange}
       allowClear={allowClear}
+      value={value}
+      {...restProps}
     >
       {dataSelect.map((data) => (
         <Select.Option value={data.name}>{data.name}</Select.Option>

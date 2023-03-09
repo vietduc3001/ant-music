@@ -15,7 +15,7 @@ import AppHeader from './AppHeader';
 
 const PAGE_SIZE = 10;
 
-const Feature = () => {
+const User = () => {
   const dispatch = useDispatch();
   const { userList = [], totalRecord } = useSelector(({ user }) => user);
   const { loading } = useSelector(({ common }) => common);
@@ -24,18 +24,20 @@ const Feature = () => {
   const [dataFilter, setDataFilter] = useState({
     offset: 0,
     limit: PAGE_SIZE,
-    keyword: '',
-    department: '',
-    // status: '',
+    keyword: undefined,
+    department: undefined,
+    status: undefined,
+    role: undefined,
   });
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isChangePasswordModalVisible, setIsChangePasswordModalVisible] =
     useState(false);
   const [isDeleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [dataEdit, setDataEdit] = useState({});
+  const [selectedUsers, setSelectedUsers] = useState([]);
 
-  const getListData = () => {
-    dispatch(getUserList(dataFilter));
+  const getListData = (params) => {
+    dispatch(getUserList(params));
   };
 
   const onChangePage = (page) => {
@@ -59,12 +61,21 @@ const Feature = () => {
     const newDataFilter = {
       ...dataFilter,
     };
-    newDataFilter[key] = value || '';
+    newDataFilter[key] = value;
     setDataFilter(newDataFilter);
   };
 
+  const renderFilter = () => {
+    const newDataFilter = { ...dataFilter };
+    if (!newDataFilter.status) delete newDataFilter.status;
+    if (!newDataFilter.department) delete newDataFilter.department;
+    if (!newDataFilter.role) delete newDataFilter.role;
+    return newDataFilter;
+  };
+
   useEffect(() => {
-    getListData();
+    const params = renderFilter();
+    getListData(params);
   }, [dataFilter]);
 
   const showModal = () => {
@@ -77,7 +88,6 @@ const Feature = () => {
   };
 
   const onEdit = (data) => {
-    // console.log('🚀 ~ file: index.js:55 ~ onEditFeature ~ feature:', feature);
     setDataEdit(data);
     showModal();
   };
@@ -97,6 +107,14 @@ const Feature = () => {
     setDataEdit({});
   };
 
+  const handleChangeUserSelection = (value) => {
+    setSelectedUsers(value);
+  };
+
+  const handleChangeUserStatus = ({ key }) => {
+    console.log('handleChangeUserStatus', key, selectedUsers);
+  };
+
   const currentPage = dataFilter.limit / PAGE_SIZE;
 
   return (
@@ -107,6 +125,8 @@ const Feature = () => {
           onSearch={onSearch}
           showModal={showModal}
           handleChangeFilter={handleChangeFilter}
+          handleChangeUserStatus={handleChangeUserStatus}
+          selectedUsers={selectedUsers}
         />
 
         <AppsContent
@@ -124,6 +144,7 @@ const Feature = () => {
             dataSource={userList}
             currentPage={currentPage}
             pageSize={PAGE_SIZE}
+            handleChangeUserSelection={handleChangeUserSelection}
           />
         </AppsContent>
 
@@ -166,4 +187,4 @@ const Feature = () => {
   );
 };
 
-export default Feature;
+export default User;

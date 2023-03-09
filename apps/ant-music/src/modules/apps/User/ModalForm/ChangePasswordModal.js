@@ -1,10 +1,7 @@
 import React from 'react';
 import { Form, Input, Modal, Row, Col } from 'antd';
 import { StyledModalForm, StyledSubmitFormButton } from '../index.styled';
-import {
-  onUpdateSelectedUser,
-  onCreateUser,
-} from '../../../../toolkit/actions';
+import { onAminUpdateUserPassword } from '../../../../toolkit/actions';
 import { useDispatch } from 'react-redux';
 import { useIntl } from 'react-intl';
 
@@ -36,15 +33,10 @@ const ChangePasswordModal = ({ dataEdit, isModalVisible, closeModal }) => {
   const onFinish = (values) => {
     const dataSubmit = {
       ...values,
-      parent: values.parent || 0,
+      id: dataEdit.id,
     };
-    if (dataEdit?.id) {
-      console.log('onUpdateSelected:', dataSubmit);
-      dispatch(onUpdateSelectedUser(dataEdit?.id, dataSubmit, onSuccess));
-    } else {
-      console.log('onCreate:', dataSubmit);
-      dispatch(onCreateUser(dataSubmit, onSuccess));
-    }
+    console.log('onUpdateSelected:', dataSubmit);
+    dispatch(onAminUpdateUserPassword(dataSubmit, onSuccess));
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -80,7 +72,7 @@ const ChangePasswordModal = ({ dataEdit, isModalVisible, closeModal }) => {
       >
         <Form.Item
           {...formItemLayout}
-          name='newPassword'
+          name='password'
           className='form-field'
           rules={[
             {

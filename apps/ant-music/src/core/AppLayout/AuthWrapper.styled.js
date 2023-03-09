@@ -25,7 +25,7 @@ export const StyledAuthCard = styled(Card)`
   justify-content: center;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
-    min-height: 450px;
+    min-height: 400px;
   }
 
   & .ant-card-body {
@@ -52,13 +52,14 @@ export const StyledAuthMainContent = styled.div`
 `;
 
 export const StyledAuthCardHeader = styled.div`
-  margin-bottom: 24px;
+  margin-top: 25px;
+  margin-bottom: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}px) {
-    margin-bottom: 36px;
+    /* margin-bottom: 36px; */
   }
 
   & img {

@@ -8,12 +8,12 @@ import {
 import jwtAxios from '@ant-music/services/auth/JWT';
 import { appIntl } from '@ant-music/helpers';
 
-export const getUserList = (filterData) => {
+export const getUserList = (params) => {
   return (dispatch) => {
     dispatch({ type: FETCH_START });
     jwtAxios
       .get('/users/filter-all', {
-        params: filterData,
+        params,
       })
       .then(({ data }) => {
         dispatch({ type: FETCH_SUCCESS });
@@ -117,6 +117,40 @@ export const onDeleteSelectedUser = (id, onSuccess) => {
     dispatch({ type: FETCH_START });
     jwtAxios
       .delete(`/user/delete${id}`)
+      .then((res) => {
+        if (res.status >= 200 && res.status < 300) {
+          dispatch({ type: FETCH_SUCCESS });
+          // dispatch({ type: GET_FEATURE, payload: {} });
+          dispatch({
+            type: SHOW_MESSAGE,
+            payload: res.data?.message || messages['message.successfully'],
+          });
+          if (onSuccess) {
+            onSuccess();
+          }
+        } else {
+          dispatch({
+            type: FETCH_ERROR,
+            payload:
+              res.data?.message || messages['message.somethingWentWrong'],
+          });
+        }
+      })
+      .catch((error) => {
+        dispatch({
+          type: FETCH_ERROR,
+          payload: error?.response?.data?.message || error.message,
+        });
+      });
+  };
+};
+
+export const onAminUpdateUserPassword = (payload, onSuccess) => {
+  const { messages } = appIntl();
+  return (dispatch) => {
+    dispatch({ type: FETCH_START });
+    jwtAxios
+      .post('/users/update-password', payload)
       .then((res) => {
         if (res.status >= 200 && res.status < 300) {
           dispatch({ type: FETCH_SUCCESS });

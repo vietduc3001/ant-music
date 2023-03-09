@@ -24,36 +24,36 @@ export const getFeature = (filterData) => {
         dispatch({ type: GET_FEATURE, payload: data });
       })
       .catch((error) => {
-        dispatch({ type: FETCH_ERROR, payload: error.message });
+        dispatch({
+          type: FETCH_ERROR,
+          payload: error?.response?.data?.message || error.message,
+        });
       });
   };
 };
 
-export const getFeatureParent = (filterData) => {
+export const getAllFeature = (onSuccess) => {
   return (dispatch) => {
     dispatch({ type: FETCH_START });
     jwtAxios
-      .get('/feature/parent', {
-        params: { filterData },
-      })
+      .get('/feature/page')
       .then(({ data }) => {
-        console.log('🚀 ~ file: Feature.js:23 ~ .then ~ data:', data);
         dispatch({ type: FETCH_SUCCESS });
-        dispatch({ type: GET_FEATURE_PARENT, payload: data.result });
+        if (onSuccess) {
+          onSuccess(data.data);
+        }
       })
       .catch((error) => {
-        dispatch({ type: FETCH_ERROR, payload: error.message });
+        dispatch({
+          type: FETCH_ERROR,
+          payload: error?.response?.data?.message || error.message,
+        });
       });
-  };
-};
-
-export const setFilters = (filters) => {
-  return (dispatch) => {
-    dispatch({ type: SET_FILTER_FEATURE_DATA, payload: filters });
   };
 };
 
 export const onUpdateSelectedFeature = (id, feature, onSuccess) => {
+  const { messages } = appIntl();
   return (dispatch) => {
     dispatch({ type: FETCH_START });
     jwtAxios
@@ -63,7 +63,8 @@ export const onUpdateSelectedFeature = (id, feature, onSuccess) => {
           dispatch({ type: FETCH_SUCCESS });
           dispatch({
             type: SHOW_MESSAGE,
-            payload: res.data?.message,
+            payload:
+              res.data?.message || messages['message.updateSuccessfully'],
           });
           if (onSuccess) {
             onSuccess();
@@ -76,7 +77,10 @@ export const onUpdateSelectedFeature = (id, feature, onSuccess) => {
         }
       })
       .catch((error) => {
-        dispatch({ type: FETCH_ERROR, payload: error.message });
+        dispatch({
+          type: FETCH_ERROR,
+          payload: error?.response?.data?.message || error.message,
+        });
       });
   };
 };
@@ -93,7 +97,8 @@ export const onCreateFeature = (feature, onSuccess) => {
           // dispatch({ type: GET_FEATURE, payload: {} });
           dispatch({
             type: SHOW_MESSAGE,
-            payload: res.data?.message,
+            payload:
+              res.data?.message || messages['message.createSuccessfully'],
           });
           if (onSuccess) {
             onSuccess();

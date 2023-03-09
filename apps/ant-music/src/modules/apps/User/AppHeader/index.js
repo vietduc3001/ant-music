@@ -1,4 +1,4 @@
-import { Button, Input } from 'antd';
+import { Button, Input, Space } from 'antd';
 import React from 'react';
 import AppsHeader from '@ant-music/components/AppsHeader';
 import {
@@ -9,8 +9,16 @@ import {
 } from '../index.styled';
 import DepartmentSelect from '../../../../components/Select/DepartmentSelect';
 import RoleSelect from '../../../../components/Select/RoleSelect';
+import UserStatusSelect from '../../../../components/Select/UserStatusSelect';
+import ChangeStatusAction from './ChangeStatusAction';
 
-const AppHeader = ({ onSearch, showModal, handleChangeFilter }) => {
+const AppHeader = ({
+  onSearch,
+  showModal,
+  handleChangeFilter,
+  handleChangeUserStatus,
+  selectedUsers,
+}) => {
   return (
     <AppsHeader key={'wrap'}>
       <StyledHeader>
@@ -28,11 +36,22 @@ const AppHeader = ({ onSearch, showModal, handleChangeFilter }) => {
             onChange={(value) => handleChangeFilter(value, 'department')}
           />
           <RoleSelect onChange={(value) => handleChangeFilter(value, 'role')} />
+          <UserStatusSelect
+            onChange={(value) => handleChangeFilter(value, 'status')}
+          />
         </StyledSelectGroup>
         <StyledHeaderRight>
-          <Button type='primary' onClick={showModal}>
-            Thêm người dùng
-          </Button>
+          <Space>
+            {(selectedUsers.length > 0 && (
+              <ChangeStatusAction
+                handleChangeUserStatus={handleChangeUserStatus}
+              />
+            )) ||
+              null}
+            <Button type='primary' onClick={showModal}>
+              Thêm người dùng
+            </Button>
+          </Space>
         </StyledHeaderRight>
       </StyledHeader>
     </AppsHeader>

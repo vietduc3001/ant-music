@@ -11,6 +11,7 @@ import {
 } from './AuthWrapper.styled';
 import AppLogo from '@ant-music/components/AppLogo';
 import AppAnimateGroup from '@ant-music/components/AppAnimateGroup';
+import AppInfoView from '@ant-music/components/AppInfoView';
 
 const AuthWrapper = ({ children }) => {
   return (
@@ -40,6 +41,7 @@ const AuthWrapper = ({ children }) => {
           </StyledAuthWellAction> */}
             </StyledAuthCard>
           </StyledAuthWrap>
+          {/* <AppInfoView /> */}
         </AppAnimateGroup>
       </StyledMainAuthScrollbar>
     </StyledAuth>

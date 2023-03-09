@@ -54,7 +54,7 @@ const CustomerTable = ({
       hoverColor
       data={featureList}
       columns={columns}
-      loading={loading}
+      loading={{ spinning: loading, indicator: null }}
       scroll={{ x: 'auto' }}
     />
   );

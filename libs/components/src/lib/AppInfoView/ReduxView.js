@@ -29,6 +29,7 @@ const AppInfoViewRedux = () => {
   }, [displayMessage]);
 
   return loading ? <AppLoader /> : null;
+  // return null;
 };
 
 export default AppInfoViewRedux;

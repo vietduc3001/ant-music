@@ -115,6 +115,12 @@
       "@ant-music/components/AppConfirmationModal": [
         "libs/components/src/lib/AppConfirmationModal/index.js"
       ],
+      "@ant-music/components/AppRowContainer": [
+        "libs/components/src/lib/AppRowContainer/index.js"
+      ],
+      "@ant-music/components/AppRowSimpleContainer": [
+        "libs/components/src/lib/AppRowContainer/AppRowSimpleContainer.js"
+      ],
 
       // =============================== helpers =============================
       "@ant-music/helpers": ["libs/helpers/src/index.js"],

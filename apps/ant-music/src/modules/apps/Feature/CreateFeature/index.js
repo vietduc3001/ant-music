@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 
 import { Button, Form, Input, Modal, InputNumber } from 'antd';
 import { StyledFeatureModalForm } from '../index.styled';
-import SelectFeature from '../SelectFeature';
 import {
   onCreateFeature,
   onUpdateSelectedFeature,
 } from '../../../../toolkit/actions';
 import { useDispatch } from 'react-redux';
 import { useIntl } from 'react-intl';
+import FeatureSelect from '../../../../components/Select/FeatureSelect';
 
 const FeatureModal = ({
   selectedFeature,
@@ -71,6 +71,7 @@ const FeatureModal = ({
           selectedFeature
             ? {
                 ...selectedFeature,
+                parent: selectedFeature.parent || undefined,
               }
             : {}
         }
@@ -89,7 +90,11 @@ const FeatureModal = ({
           name='parent'
           // rules={[{ required: true, message: 'Vui lòng nhập tên chức năng!' }]}
         >
-          <SelectFeature placeholder='Chức năng cấp trên' />
+          <FeatureSelect
+            currentFeature={selectedFeature.id}
+            width='100%'
+            placeholder='Chức năng cấp trên'
+          />
         </Form.Item>
 
         <Form.Item

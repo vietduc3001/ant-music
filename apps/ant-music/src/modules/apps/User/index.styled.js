@@ -1,4 +1,4 @@
-import { Button, Form, Select } from 'antd';
+import { Button, Form, Modal, Select } from 'antd';
 import styled from 'styled-components';
 import AppsPagination from '@ant-music/components/AppsPagination';
 import AppTableContainer from '@ant-music/components/AppTableContainer';
@@ -13,6 +13,7 @@ export const StyledHeader = styled.div`
 
 export const StyledInputView = styled.div`
   max-width: 150px;
+  margin-left: 10px;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.sm}px) {
     max-width: 200px;
@@ -172,4 +173,12 @@ export const StyledSelectGroup = styled.div`
   margin-left: 10px;
   display: flex;
   gap: 10px;
+`;
+
+export const StyledGrantPermissionModal = styled(Modal)`
+  width: 100vw !important;
+  & .ant-modal-body {
+    max-height: 60vh;
+    overflow: auto;
+  }
 `;

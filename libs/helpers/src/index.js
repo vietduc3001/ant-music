@@ -7,3 +7,4 @@ export * from './RouteHelper';
 export * from './ThemeHelper';
 export * from './MenuGenerator';
 export * from './ArrayHelper';
+export * from './InputHelper';
