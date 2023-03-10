@@ -7,12 +7,18 @@ import { errorPagesConfigs } from './ErrorPagesRoutes';
 import { accountPagesConfigs } from './AccountRoutes';
 import { appsConfig } from './AppsRoutes';
 import { categoriesConfig } from './CategoriesRoutes';
+import { contentsConfig } from './ContentsRoutes';
 import { initialUrl, guestUrl } from '@ant-music/constants/AppConst';
 
 const authorizedStructure = {
   fallbackPath: '/signin',
   unAuthorizedComponent: <Error403 />,
-  routes: [...accountPagesConfigs, ...appsConfig, ...categoriesConfig],
+  routes: [
+    ...accountPagesConfigs,
+    ...appsConfig,
+    ...categoriesConfig,
+    ...contentsConfig,
+  ],
 };
 
 const unAuthorizedStructure = {

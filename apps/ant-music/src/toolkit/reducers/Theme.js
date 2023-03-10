@@ -1,9 +1,10 @@
 import { GET_THEME } from '@ant-music/constants/ActionTypes';
 import { createReducer } from '@reduxjs/toolkit';
+import { themes } from '../../data';
 
 const initialState = {
-  themeList: [],
-  totalRecord: 0,
+  themeList: themes,
+  totalRecord: themes.length,
 };
 
 const themeReducer = createReducer(initialState, (builder) => {

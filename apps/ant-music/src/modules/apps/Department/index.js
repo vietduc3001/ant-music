@@ -93,7 +93,7 @@ const Department = () => {
   return (
     <>
       <AppPageMeta title={menuItem.name} />
-      <AppsContainer title={menuItem.name}>
+      <AppsContainer title={menuItem.name} fullView>
         <AppsHeader key={'wrap'}>
           <StyledCustomerHeader>
             <StyledCustomerInputView>

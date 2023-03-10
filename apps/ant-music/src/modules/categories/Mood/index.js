@@ -89,7 +89,7 @@ const Mood = () => {
   return (
     <>
       <AppPageMeta title={menuItem.name} />
-      <AppsContainer title={menuItem.name}>
+      <AppsContainer title={menuItem.name} fullView>
         <AppHeader
           onSearch={onSearch}
           showModal={showModal}

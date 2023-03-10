@@ -18,52 +18,31 @@ import {
 const AppsContainer = (props) => {
   const [isAppDrawerOpen, setAppDrawerOpen] = useState(false);
   const { footer, navStyle } = useLayoutContext();
-  const {
-    title,
-    noContentAnimation,
-    sidebarContent,
-    fullView,
-    children,
-    actionContent,
-  } = props;
-  // console.log(actionContent);
-
+  const { title, noContentAnimation, sidebarContent, fullView, children } =
+    props;
   return (
     <StyledAppWrap>
       <StyledAppWrapHeader
         className={clsx({
           appsWrapHeaderFull: fullView,
         })}
-        style={{
-          display: actionContent ? 'flex' : 'block',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
       >
         {fullView ? null : (
           <StyledMenuBtn onClick={() => setAppDrawerOpen(!isAppDrawerOpen)}>
             <MenuOutlined className='menu-btn-icon' />
           </StyledMenuBtn>
         )}
-        <QueueAnim
-          style={{
-            zIndex: 3,
-            overflow: 'hidden',
-          }}
-          type='scale'
-        >
+        <QueueAnim style={{ zIndex: 3, overflow: 'hidden' }} type='scale'>
           <h2 className='text-truncate' key='title'>
             {title}
           </h2>
-          {/* {sidebarContent} */}
         </QueueAnim>
-        {actionContent}
       </StyledAppWrapHeader>
 
       <StyledAppContainer>
         {sidebarContent ? (
           <QueueAnim
-            style={{ zIndex: 3, marginRight: '30px' }}
+            style={{ zIndex: 3 }}
             type={props.type ? props.type : 'left'}
           >
             <AppSidebar

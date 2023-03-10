@@ -1,9 +1,10 @@
 import { GET_MOOD } from '@ant-music/constants/ActionTypes';
 import { createReducer } from '@reduxjs/toolkit';
+import { moods } from '../../data';
 
 const initialState = {
-  moodList: [],
-  totalRecord: 0,
+  moodList: moods,
+  totalRecord: moods.length,
 };
 
 const moodReducer = createReducer(initialState, (builder) => {

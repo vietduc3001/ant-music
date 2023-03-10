@@ -28,6 +28,7 @@
   "common.role": "Role",
   "common.oldPassword": "Old Password",
   "common.newPassword": "New Password",
+  "common.noRecordFound": "No Record Found",
   "userProfile.social": "Social",
   "userProfile.myProfile": "My Profile",
   "userProfile.logout": "Logout",
@@ -61,5 +62,7 @@
   "sidebar.management": "Management",
   "sidebar.management.department": "Department",
   "sidebar.management.feature": "Feature",
-  "sidebar.management.user": "User"
+  "sidebar.management.user": "User",
+  "sidebar.contents": "Contents",
+  "sidebar.contents.songs": "Song"
 }

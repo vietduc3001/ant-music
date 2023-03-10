@@ -16,6 +16,7 @@ const PAGE_SIZE = 10;
 const Genre = () => {
   const dispatch = useDispatch();
   const { genreList, totalRecord } = useSelector(({ genre }) => genre);
+  console.log('🚀 ~ file: index.js:19 ~ Genre ~ genreList:', genreList);
   const { loading } = useSelector(({ common }) => common);
   const menuItem = RenderMenuItem('/genre');
 
@@ -89,7 +90,7 @@ const Genre = () => {
   return (
     <>
       <AppPageMeta title={menuItem.name} />
-      <AppsContainer title={menuItem.name}>
+      <AppsContainer title={menuItem.name} fullView>
         <AppHeader
           onSearch={onSearch}
           showModal={showModal}

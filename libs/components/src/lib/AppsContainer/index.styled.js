@@ -107,13 +107,11 @@ export const StyledAppSidebar = styled.div`
   border: 1px solid ${({ theme }) => theme.palette.background.paper};
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.lg}px) {
-    width: 100%;
-    /* width: 17.5rem; */
+    width: 17.5rem;
     display: flex;
   }
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.xxl}px) {
-    width: 100%;
-    /* width: 17.5rem; */
+    width: 17.5rem;
   }
 `;
 
@@ -203,8 +201,6 @@ export const StyledMenuBtn = styled(Button)`
 export const StyledAppContainer = styled.div`
   display: flex;
   height: calc(100vh - 138px);
-  /* flex-direction: column; */
-  /* display: block; */
 
   .appMainFixedFooter & {
     height: calc(100vh - 184px) !important;
@@ -243,9 +239,7 @@ export const StyledMainContent = styled.div`
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.lg}px) {
     width: calc(100% - 17.5rem);
-    width: 100%;
-    /* padding-left: 32px; */
-    /* padding-top: 32px; */
+    padding-left: 32px;
 
     [dir='rtl'] & {
       padding-left: 0;

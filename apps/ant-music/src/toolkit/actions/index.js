@@ -8,3 +8,4 @@ export * from './Theme';
 export * from './Effect';
 export * from './Mood';
 export * from './Instrument';
+export * from './Song';

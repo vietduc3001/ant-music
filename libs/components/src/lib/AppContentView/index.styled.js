@@ -12,7 +12,7 @@ export const StyledMainContentView = styled(Content)`
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.md}px) {
     /* padding: 30px 32px 0; */
-    padding: 0px 32px 0;
+    padding: 20px 32px 0;
   }
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.xxl}px) {
     max-width: 1650px;

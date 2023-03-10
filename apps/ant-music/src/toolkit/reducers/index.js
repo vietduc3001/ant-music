@@ -9,6 +9,7 @@ import Mood from './Mood';
 import Theme from './Theme';
 import Effect from './Effect';
 import Instrument from './Instrument';
+import Song from './Song';
 
 const reducers = () =>
   combineReducers({
@@ -22,6 +23,7 @@ const reducers = () =>
     theme: Theme,
     effect: Effect,
     instrument: Instrument,
+    song: Song,
   });
 
 export default reducers;

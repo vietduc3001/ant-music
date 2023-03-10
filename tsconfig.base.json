@@ -121,6 +121,15 @@
       "@ant-music/components/AppRowSimpleContainer": [
         "libs/components/src/lib/AppRowContainer/AppRowSimpleContainer.js"
       ],
+      "@ant-music/components/AppList": [
+        "libs/components/src/lib/AppList/index.js"
+      ],
+      "@ant-music/components/AppList/ListEmptyResult": [
+        "libs/components/src/lib/AppList/ListEmptyResult.js"
+      ],
+      "@ant-music/components/AppList/ListFooter": [
+        "libs/components/src/lib/AppList/ListFooter.js"
+      ],
 
       // =============================== helpers =============================
       "@ant-music/helpers": ["libs/helpers/src/index.js"],

@@ -1,6 +1,6 @@
 import { IoIosSettings } from 'react-icons/io';
 import { MdHomeWork, MdQueueMusic } from 'react-icons/md';
-import { FaUser } from 'react-icons/fa';
+import { FaUser, FaMusic } from 'react-icons/fa';
 import { GiMusicalKeyboard, GiMusicSpell } from 'react-icons/gi';
 import { BsMusicPlayerFill } from 'react-icons/bs';
 import { ImFileMusic } from 'react-icons/im';
@@ -38,7 +38,6 @@ const routesConfig = [
       },
     ],
   },
-
   {
     id: 'categories',
     title: 'Categories',
@@ -79,6 +78,21 @@ const routesConfig = [
         messageId: 'sidebar.categories.instrument',
         icon: <GiMusicalKeyboard />,
         path: '/instrument',
+      },
+    ],
+  },
+  {
+    id: 'contents',
+    title: 'Contents',
+    messageId: 'sidebar.contents',
+    type: 'group',
+    children: [
+      {
+        id: 'songs',
+        title: 'Songs',
+        messageId: 'sidebar.contents.songs',
+        icon: <FaMusic />,
+        path: '/songs',
       },
     ],
   },

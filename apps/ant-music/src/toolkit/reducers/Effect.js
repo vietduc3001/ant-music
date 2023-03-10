@@ -1,9 +1,10 @@
 import { GET_EFFECT } from '@ant-music/constants/ActionTypes';
 import { createReducer } from '@reduxjs/toolkit';
+import { effects } from '../../data';
 
 const initialState = {
-  effectList: [],
-  totalRecord: 0,
+  effectList: effects,
+  totalRecord: effects.length,
 };
 
 const effectReducer = createReducer(initialState, (builder) => {

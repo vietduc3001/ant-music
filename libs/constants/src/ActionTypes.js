@@ -172,3 +172,6 @@ export const GET_EFFECT = 'get_effect';
 
 // INSTRUMENTS
 export const GET_INSTRUMENT = 'get_instrument';
+
+// SONGS
+export const GET_SONGS = 'get_songs';

@@ -28,7 +28,7 @@ AppsPagination.defaultProps = {
 
 AppsPagination.propTypes = {
   count: PropTypes.number.isRequired,
-  page: PropTypes.number.isRequired,
+  current: PropTypes.number.isRequired,
   onChange: PropTypes.func,
   className: PropTypes.string,
   pageSize: PropTypes.number,

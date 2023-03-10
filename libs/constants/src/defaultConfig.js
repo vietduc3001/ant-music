@@ -16,6 +16,7 @@ export const appThemeFont = {
     regular: Fonts.REGULAR,
     medium: Fonts.MEDIUM,
     bold: Fonts.BOLD,
+    semiBold: Fonts.SEMI_BOLD,
     extraBold: Fonts.EXTRA_BOLD,
   },
   size: {

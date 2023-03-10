@@ -3,21 +3,19 @@ import PropTypes from 'prop-types';
 import { StyledTable, StyledGroupButton } from '../index.styled';
 import { Button, Space } from 'antd';
 
-const Table = ({ data, loading, onEdit, currentPage, pageSize }) => {
+const Table = ({ dataSource, loading, onEdit, currentPage, pageSize }) => {
   const Actions = ({ record }) => {
     return (
-      <StyledGroupButton>
-        <Button
-          type='primary'
-          onClick={() => onEdit(record)}
-          className='edit-button'
-        >
-          <Space>
-            Sửa
-            <i className='fa-solid fa-pen-to-square'></i>
-          </Space>
-        </Button>
-      </StyledGroupButton>
+      <Button
+        type='primary'
+        onClick={() => onEdit(record)}
+        className='edit-button'
+      >
+        <Space>
+          Sửa
+          <i className='fa-solid fa-pen-to-square'></i>
+        </Space>
+      </Button>
     );
   };
 
@@ -54,7 +52,7 @@ const Table = ({ data, loading, onEdit, currentPage, pageSize }) => {
   return (
     <StyledTable
       hoverColor
-      data={data}
+      data={dataSource}
       columns={columns}
       loading={{ spinning: loading, indicator: null }}
       scroll={{ x: 'auto' }}

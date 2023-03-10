@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StyledTable, StyledGroupButton } from '../index.styled';
 import { Button, Space } from 'antd';
 
-const Table = ({ data, loading, onEdit, currentPage, pageSize }) => {
+const Table = ({ dataSource, loading, onEdit, currentPage, pageSize }) => {
   const Actions = ({ record }) => {
     return (
       <StyledGroupButton>
@@ -54,7 +54,7 @@ const Table = ({ data, loading, onEdit, currentPage, pageSize }) => {
   return (
     <StyledTable
       hoverColor
-      data={data}
+      data={dataSource}
       columns={columns}
       loading={{ spinning: loading, indicator: null }}
       scroll={{ x: 'auto' }}

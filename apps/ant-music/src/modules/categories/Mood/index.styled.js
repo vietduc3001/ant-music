@@ -178,6 +178,7 @@ export const StyledSelectGroup = styled.div`
 export const StyledGroupButton = styled.div`
   display: flex;
   gap: 10px;
+  justify-content: center;
 
   & button span {
     margin-left: 5px;

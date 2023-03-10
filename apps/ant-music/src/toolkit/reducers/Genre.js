@@ -1,9 +1,10 @@
 import { GET_GENRE } from '@ant-music/constants/ActionTypes';
 import { createReducer } from '@reduxjs/toolkit';
+import { genres } from '../../data';
 
 const initialState = {
-  genreList: [],
-  totalRecord: 0,
+  genreList: genres,
+  totalRecord: genres.length,
 };
 
 const genreReducer = createReducer(initialState, (builder) => {

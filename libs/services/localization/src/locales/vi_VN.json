@@ -29,6 +29,7 @@
   "common.role": "Vị trí",
   "common.oldPassword": "Mật khẩu cũ",
   "common.newPassword": "Mật khẩu mới",
+  "common.noRecordFound": "Danh sách rỗng",
   "userProfile.myProfile": "Tài khoản cá nhân",
   "userProfile.logout": "Đăng xuất",
   "userProfile.personalInfo": "Thông tin cá nhân",
@@ -63,5 +64,7 @@
   "sidebar.management": "Quản trị hệ thống",
   "sidebar.management.department": "Phòng ban",
   "sidebar.management.feature": "Chức năng",
-  "sidebar.management.user": "Người dùng"
+  "sidebar.management.user": "Người dùng",
+  "sidebar.contents": "Nội dung",
+  "sidebar.contents.songs": "Bài hát"
 }

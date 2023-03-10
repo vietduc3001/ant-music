@@ -1,9 +1,10 @@
 import { GET_INSTRUMENT } from '@ant-music/constants/ActionTypes';
 import { createReducer } from '@reduxjs/toolkit';
+import { instruments } from '../../data';
 
 const initialState = {
-  instrumentList: [],
-  totalRecord: 0,
+  instrumentList: instruments,
+  totalRecord: instruments.length,
 };
 
 const instrumentReducer = createReducer(initialState, (builder) => {
