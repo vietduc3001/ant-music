@@ -16,7 +16,7 @@ import { getDepartment } from '../../../toolkit/actions';
 
 import DepartmentTable from './DepartmentTable';
 import DepartmentModal from './DepartmentModal';
-import GrantPermissionDepartmentModal from './GrantPermissionDepartmentModal';
+import GrantPermissionDepartmentModal from './GrantPerMissionDepartmentModal';
 
 const PAGE_SIZE = 10;
 
