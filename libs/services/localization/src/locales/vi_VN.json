@@ -30,6 +30,7 @@
   "common.oldPassword": "Mật khẩu cũ",
   "common.newPassword": "Mật khẩu mới",
   "common.noRecordFound": "Danh sách rỗng",
+
   "userProfile.myProfile": "Tài khoản cá nhân",
   "userProfile.logout": "Đăng xuất",
   "userProfile.personalInfo": "Thông tin cá nhân",
@@ -37,6 +38,7 @@
   "userProfile.information": "Thông tin",
   "userProfile.song": "Bài hát",
   "userProfile.social": "Mạng xã hội",
+
   "validation.emailFormat": "Vui lòng nhập đúng định dạng Email!",
   "validation.emailRequired": "Vui lòng nhập Email!",
   "validation.passwordRequired": "Vui lòng nhập mật khẩu!",
@@ -51,10 +53,13 @@
   "validation.select": "Vui lòng chọn thông tin!",
   "validation.radio": "Vui lòng chọn thông tin!",
   "validation.input": "Vui lòng nhập thông tin!",
+
   "dashboard.messages": "Tin nhắn",
+
   "message.somethingWentWrong": "Đã xảy ra lỗi, vui lòng thử lại!",
   "message.updateSuccessfully": "Cập nhật thông tin thành công!",
   "message.createSuccessfully": "Thêm thành công!",
+
   "sidebar.categories": "Danh mục",
   "sidebar.categories.genre": "Thể loại",
   "sidebar.categories.theme": "Chủ đề",
@@ -66,5 +71,31 @@
   "sidebar.management.feature": "Chức năng",
   "sidebar.management.user": "Người dùng",
   "sidebar.contents": "Nội dung",
-  "sidebar.contents.songs": "Bài hát"
+  "sidebar.contents.songs": "Bài hát",
+
+  "songsApp.title": "Bài hát",
+  "songsApp.createSongs": "Tải lên",
+  "songsApp.nameLabel": "Tên bài hát",
+  "songsApp.nameInputPlaceholder": "Nhập tên bài hát",
+  "songsApp.genreLabel": "Thể loại",
+  "songsApp.genreSelectPlaceholder": "Chọn thể loại",
+  "songsApp.themeLabel": "Chủ đề",
+  "songsApp.themeSelectPlaceholder": "Chọn chủ đề",
+  "songsApp.moodLabel": "Tâm trạng",
+  "songsApp.moodSelectPlaceholder": "Chọn tâm trạng",
+  "songsApp.effectLabel": "Hiệu ứng",
+  "songsApp.effectSelectPlaceholder": "Chọn hiệu ứng",
+  "songsApp.noteLabel": "Ghi chú",
+  "songsApp.noteInputPlaceholder": "Nhập nội dung",
+  "songsApp.linkLabel": "Đường dẫn",
+  "songsApp.linkInputPlaceholder": "Nhập đường dẫn",
+  "songsApp.websiteLabel": "Tên website",
+  "songsApp.websiteInputPlaceholder": "Nhập tên website",
+  "songsApp.uploadSubTitle": "hoặc kéo thả tệp vào đây",
+  "songsApp.uploadTitleMp3": "Chọn tệp MP3 để tải lên",
+  "songsApp.uploadTitleMp4": "Chọn tệp MP4 để tải lên",
+  "songsApp.uploadTitleWav": "Chọn tệp WAV để tải lên",
+  "songsApp.uploadTitleMidi": "Chọn tệp MIDI để tải lên",
+  "songsApp.uploading": "Đang tải lên",
+  "songsApp.uploadLabel": "Tải lên"
 }

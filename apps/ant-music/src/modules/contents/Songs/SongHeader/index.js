@@ -13,7 +13,14 @@ import SongPhaseSelect from '../../../../components/Select/SongPhaseSelect';
 import SongStatusSelect from '../../../../components/Select/SongStatusSelect';
 import SongReleaseStatusSelect from '../../../../components/Select/SongReleaseStatusSelect';
 
-const SongHeader = ({ onSearch, showModal, count, current, pageSize }) => {
+const SongHeader = ({
+  onSearch,
+  showModal,
+  count,
+  current,
+  pageSize,
+  showModalUpload,
+}) => {
   return (
     <AppsHeader key={'wrap'}>
       <StyledHeader>
@@ -34,7 +41,7 @@ const SongHeader = ({ onSearch, showModal, count, current, pageSize }) => {
           />
         </StyledInputView>
         <StyledHeaderRight>
-          <Button type='primary' onClick={showModal}>
+          <Button type='primary' onClick={showModalUpload}>
             <Space>
               <TbUpload />
               Tải lên

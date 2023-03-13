@@ -18,6 +18,9 @@ import {
   FaInfo,
   FaPlus,
 } from 'react-icons/fa';
+import { HiArrowDown } from 'react-icons/hi';
+import { BsChatSquareText } from 'react-icons/bs';
+import { Button, Tooltip } from 'antd';
 // import SongDetail from '../SongsDetail';
 // import SongsUpload from './SongsUpload';
 
@@ -87,18 +90,39 @@ const SongItem = ({ song = {}, idCurrentSong, handleChangeCurrentSong }) => {
           </StyledSongItemAlbums>
           <StyledSongItemOthers>
             {/* <StyledSongItemInfo onClick={toggleModalUpload} icon={<FaPlus />} /> */}
-            <StyledSongItemInfo onClick={toggleModal} icon={<FaInfo />} />
+            {/* <StyledSongItemInfo onClick={toggleModal} icon={<FaInfo />} /> */}
             <div>
-              <FaHeart />
-              <span>{song.count_download}</span>
-            </div>
-            <div>
-              <FaDownload />
-              <span>{song.count_download}</span>
-            </div>
-            <div>
-              <FaHeadphones />
-              <span>{song.count_view}</span>
+              <Tooltip title={`Bình luận`}>
+                <Button
+                  shape='circle'
+                  className='btn-action'
+                  icon={<BsChatSquareText />}
+                ></Button>
+              </Tooltip>
+              <Tooltip title={`Tải xuống. Lượt tải: ${song.count_download}`}>
+                <Button
+                  shape='circle'
+                  className='btn-action'
+                  icon={<HiArrowDown />}
+                ></Button>
+              </Tooltip>
+              <Tooltip title={`Lượt nghe: ${song.count_view}`}>
+                <Button
+                  shape='circle'
+                  className='btn-action'
+                  icon={<FaHeadphones />}
+                ></Button>
+              </Tooltip>
+              <Tooltip title={`Chi tiết`}>
+                <Button
+                  shape='circle'
+                  className='btn-action'
+                  icon={<FaInfo />}
+                ></Button>
+              </Tooltip>
+              {/* <Tooltip title={`Lượ: ${song.count_download}`}>
+              <Button icon={<FaHeart />}></Button>
+            </Tooltip> */}
             </div>
           </StyledSongItemOthers>
         </div>

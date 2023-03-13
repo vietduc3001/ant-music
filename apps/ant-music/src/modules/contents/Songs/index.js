@@ -11,6 +11,7 @@ import { getEffectList } from '../../../toolkit/actions';
 import SideBar from './SideBar';
 import SongListing from './SongListing';
 import SongHeader from './SongHeader';
+import SongUpload from './SongUpload';
 
 const PAGE_SIZE = 10;
 
@@ -27,6 +28,7 @@ const Effect = () => {
     status: undefined,
   });
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalUploadVisible, setIsModalUploadVisible] = useState(false);
   const [dataEdit, setDataEdit] = useState({});
 
   const getListData = (params) => {
@@ -85,6 +87,14 @@ const Effect = () => {
     showModal();
   };
 
+  const showModalUpload = () => {
+    setIsModalUploadVisible(true);
+  };
+
+  const closeModalUpload = () => {
+    setIsModalUploadVisible(false);
+  };
+
   const currentPage = dataFilter.limit / PAGE_SIZE;
 
   return (
@@ -99,6 +109,7 @@ const Effect = () => {
           count={totalRecord}
           current={currentPage}
           onChange={onChangePage}
+          showModalUpload={showModalUpload}
         />
 
         <AppsContent
@@ -126,6 +137,14 @@ const Effect = () => {
           dataEdit={dataEdit}
           closeModal={closeModal}
           getListData={getListData}
+        />
+      ) : null}
+
+      {isModalUploadVisible ? (
+        <SongUpload
+          isModalVisible={isModalUploadVisible}
+          title={'Tải lên bài hát'}
+          onClose={closeModalUpload}
         />
       ) : null}
     </>

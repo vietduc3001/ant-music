@@ -6,7 +6,7 @@ export const StyledSongItemContainer = styled.div`
   padding: 10px;
   display: flex;
   gap: ${({ theme }) => {
-    console.log(theme);
+    // console.log(theme);
     return '15px';
   }};
   align-items: center;
@@ -27,7 +27,7 @@ export const StyledSongItemContainer = styled.div`
 export const StyledSongItemWrapper = styled.div`
   /* width: 500px; */
   flex-grow: 1;
-  display: flex;
+  /* display: flex; */
   & .song__other {
     display: flex;
     justify-content: space-between;
